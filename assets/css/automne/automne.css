@@ -1,0 +1,301 @@
+/* ================================================
+   AUTOMNE — Bois fumé, rouilles & lumière ambrée
+   Palette : rouille profonde, miel, brun teck, brume
+   ================================================ */
+
+:root {
+
+    --rouille: #9E3D1A;
+    /* rouille, feuille de chêne en fin de vie */
+    --rouille-clair: #D4693A;
+    /* rouille clair, lumière de coucher       */
+    --miel: #C8973A;
+    /* miel ambré, hêtre en automne            */
+    --miel-pale: #E8C87A;
+    /* miel pâle, dernier rayon de soleil      */
+    --teck: #6B3A22;
+    /* brun teck, tronc mouillé après la pluie */
+    --brume: #C4B8A8;
+    /* brume, matin de novembre                */
+    --mousse: #5A6B3C;
+    /* vert mousse, dernier vert accroché      */
+    --nuit-automne: #2A1E14;
+    /* brun nuit, crépuscule d'automne         */
+
+    --fond: #F5EDE0;
+    /* fond écorce, parchemin ancien           */
+    --blanc: #FFFBF5;
+    /* blanc chaud, page de livre au coin du feu */
+    --bois: #6B3A22;
+    /* alias pour compat avec style.css        */
+
+}
+
+
+/* ================= BASE ================= */
+
+body {
+
+    background: var(--fond);
+    color: var(--nuit-automne);
+
+    /* brume d'automne en arrière-plan */
+    background-image:
+        radial-gradient(ellipse at 15% 85%, rgba(158, 61, 26, .10) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 10%, rgba(200, 151, 58, .12) 0%, transparent 55%);
+
+}
+
+
+/* ================= TYPO ================= */
+
+h1,
+h2,
+h3 {
+
+    color: var(--nuit-automne);
+
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+
+    background-image:
+        linear-gradient(170deg,
+            rgba(42, 30, 20, .62) 0%,
+            rgba(158, 61, 26, .48) 100%),
+        url("../../images/hero/automne/hero.png");
+
+    color: var(--blanc);
+
+}
+
+/* liseré ambré en bas du hero */
+.hero::after {
+
+    content: "";
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 5px;
+
+    background: linear-gradient(90deg,
+            var(--teck),
+            var(--rouille),
+            var(--miel),
+            var(--rouille-clair),
+            var(--teck));
+
+    z-index: 3;
+
+}
+
+.hero-border {
+
+    background-image: url("../../images/border/automne/border.png");
+
+    opacity: .90;
+
+}
+
+.hero h1 {
+    color: var(--blanc);
+}
+
+.hero p {
+    color: rgba(255, 248, 240, .88);
+}
+
+
+/* ================= BUTTON ================= */
+
+.btn {
+
+    background: var(--rouille);
+    color: var(--blanc);
+
+    box-shadow: 0 5px 18px rgba(158, 61, 26, .30);
+
+}
+
+.btn:hover {
+
+    background: var(--teck);
+
+    box-shadow: 0 7px 24px rgba(107, 58, 34, .40);
+
+}
+
+
+/* ================= SAVOIR FAIRE ================= */
+
+.savoir-faire {
+
+    background: linear-gradient(145deg, #EDE0CE 0%, #E0CEB4 100%);
+
+    position: relative;
+    overflow: hidden;
+
+}
+
+/* feuille fantôme décorative */
+.savoir-faire::before {
+
+    content: "";
+
+    position: absolute;
+    bottom: -60px;
+    left: -40px;
+
+    width: 280px;
+    height: 280px;
+
+    background: radial-gradient(circle, rgba(200, 151, 58, .20) 0%, transparent 70%);
+
+    pointer-events: none;
+
+}
+
+.savoir-faire::after {
+
+    content: "";
+
+    position: absolute;
+    top: -40px;
+    right: -20px;
+
+    width: 200px;
+    height: 200px;
+
+    background: radial-gradient(circle, rgba(158, 61, 26, .15) 0%, transparent 70%);
+
+    pointer-events: none;
+
+}
+
+
+/* ================= GRID CARDS ================= */
+
+.grid div {
+
+    background: var(--blanc);
+
+    border-bottom: 3px solid var(--miel-pale);
+
+    box-shadow: 0 8px 22px rgba(107, 58, 34, .10);
+
+}
+
+.grid div:hover {
+
+    border-bottom-color: var(--miel);
+
+}
+
+
+/* ================= SIGNATURE ================= */
+
+.dish {
+
+    background: var(--blanc);
+
+    box-shadow: 0 10px 28px rgba(42, 30, 20, .12);
+
+}
+
+
+/* ================= BAR ================= */
+
+.bar {
+
+    background: linear-gradient(145deg, var(--nuit-automne) 0%, #3A2518 100%);
+
+    color: var(--blanc);
+
+    position: relative;
+    overflow: hidden;
+
+}
+
+/* texture bois */
+.bar::before {
+
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: repeating-linear-gradient(85deg,
+            transparent,
+            transparent 60px,
+            rgba(200, 151, 58, .04) 60px,
+            rgba(200, 151, 58, .04) 61px);
+
+    pointer-events: none;
+
+}
+
+.bar h2 {
+    color: var(--miel-pale);
+}
+
+.bar p {
+    color: rgba(255, 248, 235, .85);
+}
+
+
+/* ================= CTA ================= */
+
+.cta {
+
+    background: linear-gradient(145deg, #EDE0CE 0%, rgba(212, 105, 58, .20) 100%);
+
+}
+
+.cta .btn {
+
+    background: var(--rouille);
+
+    box-shadow: 0 5px 18px rgba(158, 61, 26, .28);
+
+}
+
+
+/* ================= INFOS ================= */
+
+.infos a {
+
+    color: var(--rouille);
+
+}
+
+
+/* ================= SEASON COUNTDOWN ================= */
+
+.season-timer span {
+
+    background: rgba(255, 255, 255, .18);
+    border: 1px solid rgba(255, 255, 255, .30);
+
+    color: white;
+
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+
+    background: var(--nuit-automne);
+    color: var(--blanc);
+
+}

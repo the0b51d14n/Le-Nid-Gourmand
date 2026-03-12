@@ -19,8 +19,10 @@
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/footer.css">
 
-    <!-- CSS saison chargé automatiquement -->
-    <link id="season-css" rel="stylesheet">
+    <!--
+        Le CSS saisonnier est injecté automatiquement
+        par season-core.js — ne pas ajouter de lien ici.
+    -->
 
 </head>
 
@@ -47,7 +49,7 @@
                     Réserver une table
                 </a>
 
-                <!-- compte à rebours saison -->
+                <!-- Compte à rebours — rempli par season-core.js -->
                 <div id="season-countdown"></div>
 
             </div>
@@ -62,13 +64,13 @@
                 <h2>Un lieu pensé pour le partage</h2>
 
                 <p>
-                    Le Nid Gourmand est né d’une envie simple :
-                    créer un restaurant chaleureux où l’on se sent bien,
+                    Le Nid Gourmand est né d'une envie simple :
+                    créer un restaurant chaleureux où l'on se sent bien,
                     comme dans un refuge gourmand au cœur de la ville.
                 </p>
 
                 <p>
-                    Notre cuisine s’inspire de la tradition française
+                    Notre cuisine s'inspire de la tradition française
                     tout en intégrant des influences contemporaines
                     et des options végétariennes afin de proposer
                     une expérience accessible, généreuse et conviviale.
@@ -124,7 +126,7 @@
 
                 <h2>Quelques incontournables</h2>
 
-                <!-- plats saisonniers injectés automatiquement -->
+                <!-- Plats saisonniers — remplis par season-core.js -->
                 <div class="signature-grid" id="featured-dishes"></div>
 
                 <a href="pages/Carte.html" class="btn">
@@ -149,8 +151,8 @@
 
                 <p>
                     Que ce soit pour accompagner un repas,
-                    partager une planche ou profiter d’un moment entre amis,
-                    le bar fait partie intégrante de l’expérience.
+                    partager une planche ou profiter d'un moment entre amis,
+                    le bar fait partie intégrante de l'expérience.
                 </p>
 
             </div>
@@ -162,7 +164,7 @@
 
             <div class="container">
 
-                <h2>L’expérience Nid Gourmand</h2>
+                <h2>L'expérience Nid Gourmand</h2>
 
                 <p>
                     Un cadre végétal, une ambiance chaleureuse
@@ -215,9 +217,14 @@
 
     <div id="footer"></div>
 
+    <!--
+        DEUX SCRIPTS SEULEMENT :
+        • season-core.js → détecte la saison, injecte le CSS,
+                           lance le countdown, charge les plats
+        • script.js      → header/footer, animations, menu mobile
+    -->
+    <script src="assets/js/season-core.js"></script>
     <script src="assets/js/script.js"></script>
-    <script src="assets/js/season.js"></script>
-    <script src="assets/js/countdown.js"></script>
 
 </body>
 
