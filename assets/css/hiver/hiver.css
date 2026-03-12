@@ -1,35 +1,35 @@
 /* ================================================
-   HIVER — Nuit glacée, cristaux & feu de cheminée
-   Palette : bleu nuit profond, givre blanc, braise
+   HIVER — Aurore boréale, cristaux & nuit polaire
+   Palette : neige pure, givre, aurore, lavande,
+             rose cristal, bleu profond
    ================================================ */
 
 :root {
 
-    /* palette hiver */
+    --neige: #F4FBFF;
+    /* neige pure, silence du grand nord          */
+    --givre: #CFEFFF;
+    /* bleu givre, fenêtre au petit matin         */
+    --aurore: #AEEFFF;
+    /* aurore polaire, ciel de minuit             */
+    --lavande: #DCD6FF;
+    /* lavande glacée, voile d'aurore violette    */
+    --rose: #FFD6F6;
+    /* rose cristal, reflet de l'aurore           */
+    --bleu-profond: #5CA9FF;
+    /* bleu profond d'hiver, ciel arctique        */
 
-    --bleu-nuit: #1A2830;
-    /* bleu nuit, ciel après la tempête de neige  */
-    --bleu-glace: #8AAFC0;
-    /* bleu glace, surface d'étang gelé           */
-    --givre: #DDE8F0;
-    /* givre, fenêtre au petit matin              */
-    --neige: #EEF3F8;
-    /* neige fraîche, silence du dehors           */
-    --braise: #B04A28;
-    /* braise, feu de cheminée                    */
-    --ambre-feu: #D4803A;
-    /* ambre, flamme qui vacille                  */
-    --bois-sec: #7A5234;
-    /* bois sec, bûche qui crépite                */
+    --nuit: #0A1628;
+    /* nuit polaire, fond du ciel                 */
+    --nuit-douce: #0F2040;
+    /* nuit douce, horizon lointain               */
 
-    --fond: #EBF0F5;
-    /* fond neige tassée, lumière diffuse         */
-    --blanc: #F8FBFF;
-    /* blanc givré, vitre embuée                  */
-    --bois: #7A5234;
-    /* alias pour compat avec style.css           */
-    --beige-chaud: var(--ambre-feu);
-    /* alias footer-credit */
+    --fond: #0A1628;
+    --blanc: #F4FBFF;
+    --bois: #5CA9FF;
+    /* alias compat style.css                     */
+    --beige-chaud: #DCD6FF;
+    /* alias footer-credit                        */
 
 }
 
@@ -39,12 +39,12 @@
 body {
 
     background: var(--fond);
-    color: var(--bleu-nuit);
+    color: var(--neige);
 
-    /* lumière froide et diffuse */
     background-image:
-        radial-gradient(ellipse at 50% 0%, rgba(138, 175, 192, .18) 0%, transparent 70%),
-        radial-gradient(ellipse at 90% 95%, rgba(176, 74, 40, .07) 0%, transparent 50%);
+        radial-gradient(ellipse at 15% 20%, rgba(174, 239, 255, .10) 0%, transparent 50%),
+        radial-gradient(ellipse at 85% 10%, rgba(220, 214, 255, .10) 0%, transparent 45%),
+        radial-gradient(ellipse at 50% 80%, rgba(92, 169, 255, .08) 0%, transparent 55%);
 
 }
 
@@ -54,9 +54,7 @@ body {
 h1,
 h2,
 h3 {
-
-    color: var(--bleu-nuit);
-
+    color: var(--neige);
 }
 
 
@@ -65,16 +63,17 @@ h3 {
 .hero {
 
     background-image:
-        linear-gradient(175deg,
-            rgba(20, 30, 40, .70) 0%,
-            rgba(26, 40, 48, .60) 100%),
-        url("../../images/hero/hiver/hero.png");
+        linear-gradient(180deg,
+            rgba(10, 22, 40, .50) 0%,
+            rgba(10, 22, 40, .20) 45%,
+            rgba(10, 22, 40, .65) 100%),
+        url("../../images/logo/logo hiver.png");
 
-    color: var(--blanc);
+    color: var(--neige);
 
 }
 
-/* cristaux de givre animés en bas du hero */
+/* liseré aurore boréale en bas du hero */
 .hero::after {
 
     content: "";
@@ -87,13 +86,13 @@ h3 {
     height: 5px;
 
     background: linear-gradient(90deg,
-            var(--bleu-nuit),
-            var(--bleu-glace),
-            var(--givre),
-            var(--bleu-glace),
-            var(--braise),
-            var(--bleu-glace),
-            var(--bleu-nuit));
+            var(--nuit),
+            var(--bleu-profond) 15%,
+            var(--aurore) 30%,
+            var(--lavande) 50%,
+            var(--rose) 68%,
+            var(--aurore) 83%,
+            var(--nuit));
 
     z-index: 3;
 
@@ -103,16 +102,18 @@ h3 {
 
     background-image: url("../../images/border/hiver/border.png");
 
-    opacity: .88;
+    opacity: .80;
 
 }
 
 .hero h1 {
-    color: var(--blanc);
+    color: var(--neige);
+    text-shadow: 0 2px 20px rgba(10, 22, 40, .60);
 }
 
 .hero p {
-    color: rgba(220, 235, 245, .90);
+    color: var(--givre);
+    text-shadow: 0 1px 12px rgba(10, 22, 40, .50);
 }
 
 
@@ -120,18 +121,24 @@ h3 {
 
 .btn {
 
-    background: var(--braise);
-    color: var(--blanc);
+    background: linear-gradient(135deg, var(--bleu-profond), #88C4FF);
+    color: var(--nuit);
 
-    box-shadow: 0 5px 18px rgba(176, 74, 40, .35);
+    font-weight: 600;
+
+    box-shadow:
+        0 4px 20px rgba(92, 169, 255, .45),
+        0 0 40px rgba(174, 239, 255, .10);
 
 }
 
 .btn:hover {
 
-    background: #8A3820;
+    background: linear-gradient(135deg, #4A96EE, var(--bleu-profond));
 
-    box-shadow: 0 7px 24px rgba(176, 74, 40, .50);
+    box-shadow:
+        0 6px 28px rgba(92, 169, 255, .60),
+        0 0 55px rgba(174, 239, 255, .18);
 
 }
 
@@ -140,44 +147,49 @@ h3 {
 
 .savoir-faire {
 
-    background: linear-gradient(140deg, var(--givre) 0%, #CDD9E8 100%);
+    background: linear-gradient(150deg, #0D1E38 0%, #111E3A 100%);
+
+    border: 1px solid rgba(174, 239, 255, .15);
 
     position: relative;
     overflow: hidden;
 
 }
 
-/* reflet givré */
+/* halo aurore en haut à droite */
 .savoir-faire::before {
 
     content: "";
 
     position: absolute;
-    top: -50px;
+    top: -70px;
     right: -50px;
 
-    width: 260px;
-    height: 260px;
+    width: 350px;
+    height: 350px;
 
-    background: radial-gradient(circle, rgba(255, 255, 255, .55) 0%, transparent 70%);
+    background: radial-gradient(circle,
+            rgba(220, 214, 255, .12) 0%,
+            rgba(174, 239, 255, .08) 40%,
+            transparent 70%);
 
     pointer-events: none;
 
 }
 
-/* lueur de feu en bas */
+/* halo rose en bas à gauche */
 .savoir-faire::after {
 
     content: "";
 
     position: absolute;
     bottom: -60px;
-    left: 10%;
+    left: 5%;
 
-    width: 200px;
-    height: 200px;
+    width: 280px;
+    height: 280px;
 
-    background: radial-gradient(circle, rgba(212, 128, 58, .12) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 214, 246, .10) 0%, transparent 70%);
 
     pointer-events: none;
 
@@ -188,18 +200,33 @@ h3 {
 
 .grid div {
 
-    background: var(--blanc);
+    background: linear-gradient(145deg, #0F1E36 0%, #0A1628 100%);
 
-    border-left: 3px solid var(--bleu-glace);
+    border: 1px solid rgba(174, 239, 255, .18);
+    border-top: 2px solid rgba(174, 239, 255, .35);
 
-    box-shadow: 0 8px 28px rgba(26, 40, 48, .12);
+    color: var(--givre);
+
+    box-shadow: 0 8px 32px rgba(0, 0, 0, .40);
 
 }
 
 .grid div:hover {
 
-    border-left-color: var(--braise);
+    border-top-color: var(--lavande);
 
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, .45),
+        0 0 24px rgba(220, 214, 255, .12);
+
+}
+
+.grid div h3 {
+    color: var(--aurore);
+}
+
+.grid div p {
+    color: var(--givre);
 }
 
 
@@ -207,10 +234,20 @@ h3 {
 
 .dish {
 
-    background: var(--blanc);
+    background: linear-gradient(145deg, #0F1E36 0%, #0A1628 100%);
 
-    box-shadow: 0 12px 32px rgba(26, 40, 48, .14);
+    border: 1px solid rgba(92, 169, 255, .20);
 
+    box-shadow: 0 12px 40px rgba(0, 0, 0, .45);
+
+}
+
+.dish h3 {
+    color: var(--aurore);
+}
+
+.dish p {
+    color: var(--givre);
 }
 
 
@@ -218,16 +255,18 @@ h3 {
 
 .bar {
 
-    background: linear-gradient(145deg, var(--bleu-nuit) 0%, #0E1C24 100%);
+    background: linear-gradient(150deg, #060E1C 0%, #0A1628 55%, #0D1530 100%);
 
-    color: var(--blanc);
+    color: var(--neige);
+
+    border: 1px solid rgba(92, 169, 255, .12);
 
     position: relative;
     overflow: hidden;
 
 }
 
-/* reflets de glace */
+/* voile d'aurore sur toute la section */
 .bar::before {
 
     content: "";
@@ -240,19 +279,20 @@ h3 {
     height: 100%;
 
     background:
-        radial-gradient(ellipse at 15% 50%, rgba(138, 175, 192, .08) 0%, transparent 50%),
-        radial-gradient(ellipse at 85% 50%, rgba(212, 128, 58, .06) 0%, transparent 50%);
+        radial-gradient(ellipse at 10% 50%, rgba(174, 239, 255, .08) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 50%, rgba(220, 214, 255, .08) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 0%, rgba(255, 214, 246, .05) 0%, transparent 40%);
 
     pointer-events: none;
 
 }
 
 .bar h2 {
-    color: var(--givre);
+    color: var(--aurore);
 }
 
 .bar p {
-    color: rgba(210, 230, 245, .85);
+    color: rgba(207, 239, 255, .80);
 }
 
 
@@ -260,25 +300,72 @@ h3 {
 
 .cta {
 
-    background: linear-gradient(140deg, var(--neige) 0%, var(--givre) 100%);
+    background: linear-gradient(150deg, #0D1E38 0%, #111830 100%);
 
+    border: 1px solid rgba(174, 239, 255, .15);
+
+    position: relative;
+    overflow: hidden;
+
+}
+
+/* couronne d'aurore centrale */
+.cta::before {
+
+    content: "";
+
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 500px;
+    height: 220px;
+
+    background: radial-gradient(ellipse,
+            rgba(220, 214, 255, .10) 0%,
+            rgba(174, 239, 255, .06) 50%,
+            transparent 75%);
+
+    pointer-events: none;
+
+}
+
+.cta h2 {
+    color: var(--neige);
 }
 
 .cta .btn {
-
-    background: var(--braise);
-
-    box-shadow: 0 5px 18px rgba(176, 74, 40, .30);
-
+    background: linear-gradient(135deg, var(--bleu-profond), #88C4FF);
+    color: var(--nuit);
+    font-weight: 600;
+    box-shadow: 0 4px 20px rgba(92, 169, 255, .45);
 }
 
 
-/* ================= INFOS ================= */
+/* ================= PRESENTATION / EXPERIENCE / INFOS ================= */
+
+.presentation h2,
+.experience h2,
+.infos h2 {
+    color: var(--aurore);
+}
+
+.presentation p,
+.experience p {
+    color: var(--givre);
+}
+
+.infos p {
+    color: var(--givre);
+}
 
 .infos a {
+    color: var(--bleu-profond);
+}
 
-    color: var(--braise);
-
+.infos a:hover {
+    color: var(--aurore);
 }
 
 
@@ -286,19 +373,11 @@ h3 {
 
 .season-timer span {
 
-    background: rgba(255, 255, 255, .15);
-    border: 1px solid rgba(200, 220, 235, .35);
+    background: rgba(10, 22, 40, .75);
+    border: 1px solid rgba(174, 239, 255, .28);
 
-    color: white;
+    color: var(--aurore);
 
-}
-
-
-/* ================= FOOTER ================= */
-
-footer {
-
-    background: var(--bleu-nuit);
-    color: var(--blanc);
+    box-shadow: inset 0 1px 0 rgba(207, 239, 255, .08);
 
 }

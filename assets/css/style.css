@@ -152,6 +152,15 @@ section {
     position: relative;
     z-index: 2;
 
+    color: white;
+
+}
+
+.hero-content h1,
+.hero-content p {
+
+    color: white;
+
 }
 
 .hero-logo {

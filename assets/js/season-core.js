@@ -172,12 +172,40 @@
 
     function applySeasonCSS(season) {
 
+        /* Précharge l'image hero immédiatement — coupe la cascade JS→CSS→image */
+        const preload = document.createElement("link");
+        preload.rel = "preload";
+        preload.as = "image";
+        preload.href = `${BASE_PATH}assets/images/hero/${season.key}/hero.png`;
+        document.head.appendChild(preload);
+
+        /* CSS principal saisonnier */
         const href = `${BASE_PATH}assets/css/${season.key}/${season.key}.css`;
 
         if (!document.querySelector(`link[href="${href}"]`)) {
             const link = document.createElement("link");
             link.rel = "stylesheet";
             link.href = href;
+            document.head.appendChild(link);
+        }
+
+        /* CSS header saisonnier */
+        const hrefHeader = `${BASE_PATH}assets/css/${season.key}/${season.key}-header.css`;
+
+        if (!document.querySelector(`link[href="${hrefHeader}"]`)) {
+            const link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = hrefHeader;
+            document.head.appendChild(link);
+        }
+
+        /* CSS footer saisonnier */
+        const hrefFooter = `${BASE_PATH}assets/css/${season.key}/${season.key}-footer.css`;
+
+        if (!document.querySelector(`link[href="${hrefFooter}"]`)) {
+            const link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = hrefFooter;
             document.head.appendChild(link);
         }
 

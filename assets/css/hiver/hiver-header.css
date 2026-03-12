@@ -1,0 +1,62 @@
+/* ================================================
+   HIVER — Header
+   Surcharge de header.css avec la palette hivernale
+   ================================================ */
+
+/* Conteneur principal — fond translucide nuit */
+.header-container {
+
+    background: rgba(10, 22, 40, .55);
+
+    border: 1px solid rgba(174, 239, 255, .15);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+}
+
+/* Liens de navigation */
+.nav a {
+
+    color: var(--givre);
+
+}
+
+/* Burger mobile */
+.menu-toggle {
+
+    color: var(--givre);
+
+}
+
+/* Menu mobile déroulant */
+@media (max-width: 768px) {
+
+    .nav {
+
+        background: rgba(10, 22, 40, .92);
+
+        border: 1px solid rgba(174, 239, 255, .15);
+
+    }
+
+}
+
+/* ── Au scroll (classe ajoutée par script.js) ── */
+
+.site-header.scrolled .header-container {
+
+    background: rgba(10, 22, 40, .92);
+
+    border-color: rgba(174, 239, 255, .20);
+
+    box-shadow: 0 4px 30px rgba(0, 0, 0, .40);
+
+}
+
+.site-header.scrolled .nav a,
+.site-header.scrolled .menu-toggle {
+
+    color: var(--givre);
+
+}
