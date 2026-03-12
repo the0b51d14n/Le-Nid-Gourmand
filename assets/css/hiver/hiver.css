@@ -1,0 +1,159 @@
+:root {
+
+    /* palette hiver */
+
+    --bleu-nuit: #1F2E36;
+    --bleu-froid: #AEBCC5;
+    --neige: #E6EDF2;
+
+    --beige-hiver: #F2EEE6;
+    --beige-chaud: #E4D9C8;
+
+    --bois: #7A5234;
+
+    --fond: #EEF2F5;
+    --blanc: #FFFFFF;
+
+}
+
+body {
+
+    background: var(--fond);
+    color: var(--bleu-nuit);
+
+}
+
+
+/* ================= TYPO ================= */
+
+h1,
+h2,
+h3 {
+
+    color: var(--bleu-nuit);
+
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+
+    background-image:
+        linear-gradient(rgba(20, 30, 40, .65), rgba(20, 30, 40, .75)),
+        url("../../images/hero/hiver/hero.png");
+
+    color: white;
+
+}
+
+.hero-border {
+
+    background-image: url("../../images/border/hiver/border.png");
+
+    opacity: .9;
+
+}
+
+.hero h1 {
+    color: white;
+}
+
+.hero p {
+    color: white;
+}
+
+
+/* ================= BUTTON ================= */
+
+.btn {
+
+    background: var(--bois);
+    color: white;
+
+}
+
+.btn:hover {
+
+    background: #5E3F28;
+
+}
+
+
+/* ================= SAVOIR FAIRE ================= */
+
+.savoir-faire {
+
+    background: var(--bleu-froid);
+
+}
+
+
+/* ================= GRID CARDS ================= */
+
+.grid div {
+
+    background: var(--blanc);
+
+    box-shadow: 0 12px 35px rgba(20, 30, 40, .12);
+
+}
+
+
+/* ================= SIGNATURE ================= */
+
+.dish {
+
+    background: var(--blanc);
+
+    box-shadow: 0 14px 35px rgba(20, 30, 40, .15);
+
+}
+
+
+/* ================= BAR ================= */
+
+.bar {
+
+    background: var(--bleu-nuit);
+    color: white;
+
+}
+
+.bar h2 {
+    color: white;
+}
+
+
+/* ================= CTA ================= */
+
+.cta {
+
+    background: var(--neige);
+
+}
+
+.cta .btn {
+
+    background: var(--bois);
+
+}
+
+
+/* ================= INFOS ================= */
+
+.infos a {
+
+    color: var(--bois);
+
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+
+    background: var(--bleu-nuit);
+    color: white;
+
+}

@@ -1,0 +1,141 @@
+.site-footer {
+
+    background: var(--vert-foret);
+
+    color: white;
+
+    margin-top: 140px;
+
+    padding: 80px 0 35px;
+
+}
+
+.footer-container {
+
+    width: 90%;
+    max-width: 1000px;
+
+    margin: auto;
+
+    display: grid;
+
+    gap: 45px;
+
+}
+
+/* titres */
+
+.footer-col h3,
+.footer-col h4 {
+
+    margin-bottom: 18px;
+
+    color: white;
+
+    font-family: "Playfair Display", serif;
+
+}
+
+/* textes */
+
+.footer-col p {
+
+    opacity: .9;
+
+    line-height: 1.8;
+
+    font-size: .95rem;
+
+}
+
+/* listes */
+
+.footer-col ul {
+
+    list-style: none;
+
+}
+
+.footer-col li {
+
+    margin-bottom: 12px;
+
+}
+
+/* liens */
+
+.footer-col a {
+
+    color: white;
+
+    text-decoration: none;
+
+    opacity: .85;
+
+    transition: opacity .2s ease;
+
+}
+
+.footer-col a:hover {
+
+    opacity: 1;
+
+}
+
+/* contact */
+
+.footer-contact {
+
+    margin-top: 18px;
+
+}
+
+/* séparation bas */
+
+.footer-bottom {
+
+    margin-top: 60px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid rgba(255, 255, 255, .2);
+
+    text-align: center;
+
+    font-size: .9rem;
+
+    opacity: .85;
+
+}
+
+/* crédit */
+
+.footer-credit a {
+
+    color: var(--beige-chaud);
+
+    text-decoration: none;
+
+    font-weight: 500;
+
+}
+
+.footer-credit a:hover {
+
+    text-decoration: underline;
+
+}
+
+/* responsive */
+
+@media (min-width:768px) {
+
+    .footer-container {
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 60px;
+
+    }
+
+}

@@ -1,0 +1,147 @@
+:root {
+
+    --vert-foret: #2F4A3A;
+    --vert-clair: #D8E0A6;
+    --vert-feuille: #D2E2A9;
+
+    --beige: #E8DDA0;
+    --beige-chaud: #F2DB9C;
+
+    --bois: #8B5E3C;
+
+    --fond: #F7F5EE;
+    --blanc: #FFFFFF;
+
+}
+
+body {
+
+    background: var(--fond);
+    color: var(--vert-foret);
+
+}
+
+/* ================= TYPO ================= */
+
+h1,
+h2,
+h3 {
+
+    color: var(--vert-foret);
+
+}
+
+/* ================= HERO ================= */
+
+.hero {
+
+    background-image:
+        linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .45)),
+        url("../../images/logo/logo hero off.png");
+
+    color: white;
+
+}
+
+.hero-border {
+
+    background-image: url("../../images/border/printemps/border.png");
+
+    opacity: .95;
+
+}
+
+.hero h1 {
+    color: white;
+}
+
+.hero p {
+    color: white;
+}
+
+/* ================= BUTTON ================= */
+
+.btn {
+
+    background: var(--vert-foret);
+    color: white;
+
+}
+
+.btn:hover {
+
+    background: var(--bois);
+
+}
+
+/* ================= SAVOIR FAIRE ================= */
+
+.savoir-faire {
+
+    background: var(--vert-clair);
+
+}
+
+/* ================= GRID CARDS ================= */
+
+.grid div {
+
+    background: var(--blanc);
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
+
+}
+
+/* ================= SIGNATURE ================= */
+
+.dish {
+
+    background: var(--blanc);
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
+
+}
+
+/* ================= BAR ================= */
+
+.bar {
+
+    background: var(--vert-foret);
+    color: white;
+
+}
+
+.bar h2 {
+    color: white;
+}
+
+/* ================= CTA ================= */
+
+.cta {
+
+    background: var(--vert-feuille);
+
+}
+
+.cta .btn {
+
+    background: var(--vert-foret);
+
+}
+
+/* ================= INFOS ================= */
+
+.infos a {
+
+    color: var(--vert-foret);
+
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+
+    background: var(--bois);
+    color: white;
+
+}

@@ -1,0 +1,522 @@
+:root {
+
+    --color-primary: var(--vert-foret);
+    --color-secondary: var(--vert-clair);
+    --color-accent: var(--vert-feuille);
+
+    --color-beige: var(--beige);
+    --color-beige-warm: var(--beige-chaud);
+
+    --color-wood: var(--bois);
+
+    --background: var(--fond);
+    --white: #ffffff;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    font-family: "Inter", sans-serif;
+
+    background: var(--background);
+    color: var(--color-primary);
+
+    line-height: 1.9;
+
+    -webkit-font-smoothing: antialiased;
+
+}
+
+/* ================= TYPO ================= */
+
+h1,
+h2,
+h3 {
+
+    font-family: "Playfair Display", serif;
+    font-weight: 600;
+
+}
+
+h1 {
+    font-size: 2.3rem;
+    margin-bottom: 35px;
+}
+
+h2 {
+    font-size: 1.9rem;
+    margin-bottom: 45px;
+}
+
+h3 {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+}
+
+p {
+    margin: 24px 0;
+}
+
+/* ================= LAYOUT ================= */
+
+.container {
+
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+
+}
+
+/* ================= SECTIONS ================= */
+
+section {
+
+    padding: 140px 0;
+
+    opacity: 0;
+    transform: translateY(40px);
+
+    transition: opacity .8s ease, transform .8s ease;
+
+}
+
+.visible {
+
+    opacity: 1;
+    transform: translateY(0);
+
+}
+
+/* ================= HERO ================= */
+
+.hero {
+
+    position: relative;
+
+    height: 100vh;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    padding: 0 20px;
+
+    overflow: hidden;
+
+    opacity: 1;
+    transform: none;
+
+}
+
+.hero-border {
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-size: cover;
+    background-position: center;
+
+    pointer-events: none;
+
+    z-index: 1;
+
+}
+
+.hero-content {
+
+    max-width: 650px;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: relative;
+    z-index: 2;
+
+}
+
+.hero-logo {
+
+    width: 200px;
+    max-width: 70%;
+
+    margin-bottom: 35px;
+
+}
+
+/* ================= BUTTON ================= */
+
+.btn {
+
+    display: inline-block;
+
+    padding: 14px 32px;
+
+    border-radius: 30px;
+
+    text-decoration: none;
+    font-weight: 500;
+
+    transition: transform .2s ease, background .25s ease;
+
+}
+
+.btn:hover {
+
+    transform: translateY(-2px);
+
+}
+
+/* ================= PRESENTATION ================= */
+
+.presentation {
+    text-align: center;
+}
+
+.presentation p {
+
+    max-width: 620px;
+    margin: 30px auto;
+
+}
+
+/* ================= SAVOIR FAIRE ================= */
+
+.savoir-faire {
+
+    border-radius: 50px;
+
+    margin: 90px 25px;
+
+    padding: 120px 0;
+
+}
+
+.grid {
+
+    display: grid;
+    gap: 45px;
+
+    margin-top: 70px;
+
+}
+
+.grid div {
+
+    padding: 45px;
+
+    border-radius: 30px;
+
+    transition: transform .25s ease;
+
+}
+
+.grid div:hover {
+
+    transform: translateY(-5px);
+
+}
+
+/* ================= SIGNATURE ================= */
+
+.signature {
+    text-align: center;
+}
+
+.signature-grid {
+
+    display: grid;
+    gap: 45px;
+
+    margin: 80px 0;
+
+}
+
+.dish {
+
+    border-radius: 35px;
+
+    overflow: hidden;
+
+    transition: transform .3s ease;
+
+}
+
+.dish:hover {
+
+    transform: translateY(-8px);
+
+}
+
+.dish img {
+
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+
+}
+
+.dish h3 {
+    margin: 28px 22px 12px;
+}
+
+.dish p {
+    padding: 0 22px 35px;
+}
+
+/* ================= BAR ================= */
+
+.bar {
+
+    border-radius: 50px;
+
+    margin: 90px 25px;
+
+    padding: 120px 0;
+
+    text-align: center;
+
+}
+
+.bar p {
+
+    max-width: 620px;
+    margin: auto;
+    margin-top: 25px;
+
+}
+
+/* ================= EXPERIENCE ================= */
+
+.experience {
+    text-align: center;
+}
+
+.experience p {
+
+    max-width: 620px;
+    margin: auto;
+
+}
+
+/* ================= CTA ================= */
+
+.cta {
+
+    border-radius: 50px;
+
+    margin: 90px 25px;
+
+    padding: 120px 0;
+
+    text-align: center;
+
+}
+
+/* ================= INFOS ================= */
+
+.infos {
+    text-align: center;
+}
+
+.infos p {
+    margin-bottom: 28px;
+}
+
+.infos a {
+
+    text-decoration: none;
+    font-weight: 500;
+
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+
+    text-align: center;
+
+    padding: 60px;
+
+    margin-top: 100px;
+
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width:768px) {
+
+    .hero-border {
+
+        background-size: 110%;
+
+    }
+
+    .hero-logo {
+        width: 180px;
+    }
+
+}
+
+@media (min-width:768px) {
+
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .signature-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    .hero-logo {
+        width: 260px;
+    }
+
+}
+
+@media (min-width:1100px) {
+
+    .container {
+        max-width: 1100px;
+    }
+
+    .hero-border {
+        background-size: 100%;
+    }
+
+}
+
+/* ================= SEASON COUNTDOWN ================= */
+
+#season-countdown {
+
+    margin-top: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    text-align: center;
+
+}
+
+.season-title {
+
+    font-weight: 600;
+
+    font-size: 1rem;
+
+}
+
+.season-label {
+
+    font-size: .85rem;
+
+    opacity: .75;
+
+}
+
+.season-timer {
+
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+
+    margin-top: 4px;
+
+}
+
+.season-timer span {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 55px;
+
+    padding: 8px 10px;
+
+    border-radius: 12px;
+
+    font-weight: 600;
+
+    font-size: .9rem;
+
+    backdrop-filter: blur(4px);
+
+    transition: transform .2s ease;
+
+}
+
+.season-timer span:hover {
+
+    transform: translateY(-2px);
+
+}
+
+
+/* ================= COUNTDOWN RESPONSIVE ================= */
+
+@media (min-width:768px) {
+
+    .season-title {
+
+        font-size: 1.1rem;
+
+    }
+
+    .season-timer span {
+
+        min-width: 65px;
+
+        font-size: 1rem;
+
+        padding: 10px 12px;
+
+    }
+
+}
+
+@media (min-width:1100px) {
+
+    .season-timer {
+
+        gap: 16px;
+
+    }
+
+    .season-timer span {
+
+        min-width: 75px;
+
+        padding: 12px 14px;
+
+        font-size: 1.05rem;
+
+    }
+
+}

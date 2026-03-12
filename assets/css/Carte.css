@@ -1,0 +1,135 @@
+.hero-menu{
+
+background-image:
+linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
+url("../images/logo/logo hero off.png");
+
+background-size:cover;
+background-position:center;
+
+}
+
+.menu-section{
+text-align:center;
+}
+
+.menu-subtitle{
+
+font-size:1.5rem;
+
+margin-top:60px;
+margin-bottom:25px;
+
+text-align:center;
+
+}
+
+
+/* GRID PRODUITS */
+
+.menu-grid{
+
+display:flex;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+gap:30px;
+
+margin-bottom:50px;
+
+}
+
+
+/* CARTE PRODUIT */
+
+.menu-card{
+
+background:var(--blanc);
+
+border-radius:28px;
+
+padding:25px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+display:flex;
+flex-direction:column;
+
+align-items:center;
+text-align:center;
+
+gap:10px;
+
+width:calc(50% - 30px);
+
+max-width:230px;
+
+transition:.25s;
+
+}
+
+.menu-card:hover{
+
+transform:translateY(-6px);
+
+box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+}
+
+.menu-card h4{
+
+font-family:"Playfair Display",serif;
+
+font-size:1.1rem;
+
+}
+
+.menu-card p{
+
+font-size:.9rem;
+
+opacity:.8;
+
+margin:0;
+
+}
+
+.menu-card span{
+
+margin-top:5px;
+
+font-weight:600;
+
+color:var(--bois);
+
+font-size:1rem;
+
+}
+
+
+/* TABLET */
+
+@media (min-width:768px){
+
+.menu-card{
+
+width:calc(33.333% - 30px);
+
+}
+
+}
+
+
+/* DESKTOP */
+
+@media (min-width:1100px){
+
+.menu-card{
+
+width:calc(25% - 30px);
+
+}
+
+}

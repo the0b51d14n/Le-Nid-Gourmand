@@ -1,0 +1,374 @@
+{
+    "season": "printemps",
+    "featured": [
+        {
+            "name": "Asperges vertes rôties",
+            "description": "Asperges de saison rôties, parmesan et citron.",
+            "image": "assets/images/plats/asperges-printemps.jpg"
+        },
+        {
+            "name": "Burger printanier",
+            "description": "Burger maison, légumes de saison et cheddar.",
+            "image": "assets/images/plats/burger-printemps.jpg"
+        },
+        {
+            "name": "Risotto aux petits pois",
+            "description": "Risotto crémeux aux petits pois et menthe.",
+            "image": "assets/images/plats/risotto-printemps.jpg"
+        }
+    ],
+    "menu": {
+        "drinks": {
+            "cocktails": [
+                {
+                    "name": "Spritz Printanier",
+                    "price": "12€"
+                },
+                {
+                    "name": "Gin Fleurs",
+                    "price": "12€"
+                },
+                {
+                    "name": "Negroni",
+                    "price": "12€"
+                },
+                {
+                    "name": "Margarita",
+                    "price": "12€"
+                },
+                {
+                    "name": "Mojito",
+                    "price": "12€"
+                },
+                {
+                    "name": "Moscow Mule",
+                    "price": "12€"
+                },
+                {
+                    "name": "Old Fashioned",
+                    "price": "12€"
+                },
+                {
+                    "name": "Cosmopolitan",
+                    "price": "12€"
+                },
+                {
+                    "name": "Whisky Sour",
+                    "price": "12€"
+                },
+                {
+                    "name": "Pisco Sour",
+                    "price": "12€"
+                },
+                {
+                    "name": "Caïpirinha",
+                    "price": "12€"
+                },
+                {
+                    "name": "Dark & Stormy",
+                    "price": "12€"
+                }
+            ],
+            "mocktails": [
+                {
+                    "name": "Citron Basilic",
+                    "price": "5€"
+                },
+                {
+                    "name": "Fraise Menthe",
+                    "price": "5€"
+                },
+                {
+                    "name": "Orange Gingembre",
+                    "price": "5€"
+                },
+                {
+                    "name": "Pomme Citron Vert",
+                    "price": "5€"
+                },
+                {
+                    "name": "Tonic Concombre",
+                    "price": "5€"
+                }
+            ],
+            "beers": [
+                {
+                    "name": "Blonde Artisanale",
+                    "price": "6€"
+                },
+                {
+                    "name": "IPA Locale",
+                    "price": "7€"
+                },
+                {
+                    "name": "Triple Belge",
+                    "price": "7€"
+                },
+                {
+                    "name": "Blanche",
+                    "price": "6€"
+                },
+                {
+                    "name": "Ambrée",
+                    "price": "6€"
+                },
+                {
+                    "name": "Stout",
+                    "price": "7€"
+                },
+                {
+                    "name": "Pils",
+                    "price": "5€"
+                },
+                {
+                    "name": "Bière de Saison",
+                    "price": "7€"
+                },
+                {
+                    "name": "Bière Bio",
+                    "price": "7€"
+                },
+                {
+                    "name": "Sans alcool",
+                    "price": "5€"
+                }
+            ],
+            "wines": [
+                {
+                    "name": "Chardonnay",
+                    "price": "7€"
+                },
+                {
+                    "name": "Sauvignon Blanc",
+                    "price": "7€"
+                },
+                {
+                    "name": "Pinot Noir",
+                    "price": "8€"
+                },
+                {
+                    "name": "Côtes du Rhône",
+                    "price": "8€"
+                },
+                {
+                    "name": "Bordeaux Rouge",
+                    "price": "8€"
+                },
+                {
+                    "name": "Rosé de Provence",
+                    "price": "7€"
+                },
+                {
+                    "name": "Chablis",
+                    "price": "9€"
+                },
+                {
+                    "name": "Beaujolais",
+                    "price": "7€"
+                },
+                {
+                    "name": "Saint-Émilion",
+                    "price": "9€"
+                },
+                {
+                    "name": "Champagne (coupe)",
+                    "price": "12€"
+                }
+            ],
+            "spirits": [
+                {
+                    "name": "Whisky",
+                    "price": "10€"
+                },
+                {
+                    "name": "Rhum",
+                    "price": "10€"
+                },
+                {
+                    "name": "Gin",
+                    "price": "10€"
+                },
+                {
+                    "name": "Vodka",
+                    "price": "10€"
+                },
+                {
+                    "name": "Tequila",
+                    "price": "10€"
+                },
+                {
+                    "name": "Cognac",
+                    "price": "12€"
+                },
+                {
+                    "name": "Armagnac",
+                    "price": "12€"
+                },
+                {
+                    "name": "Calvados",
+                    "price": "10€"
+                },
+                {
+                    "name": "Amaretto",
+                    "price": "9€"
+                },
+                {
+                    "name": "Baileys",
+                    "price": "9€"
+                },
+                {
+                    "name": "Chartreuse",
+                    "price": "10€"
+                },
+                {
+                    "name": "Grand Marnier",
+                    "price": "10€"
+                },
+                {
+                    "name": "Cointreau",
+                    "price": "10€"
+                },
+                {
+                    "name": "Limoncello",
+                    "price": "9€"
+                },
+                {
+                    "name": "Sambuca",
+                    "price": "9€"
+                }
+            ],
+            "softs": [
+                {
+                    "name": "Coca-Cola",
+                    "price": "4€"
+                },
+                {
+                    "name": "Coca-Cola Zéro",
+                    "price": "4€"
+                },
+                {
+                    "name": "Limonade",
+                    "price": "4€"
+                },
+                {
+                    "name": "Ice Tea",
+                    "price": "4€"
+                },
+                {
+                    "name": "Jus de pomme",
+                    "price": "4€"
+                },
+                {
+                    "name": "Jus d’orange",
+                    "price": "4€"
+                },
+                {
+                    "name": "Jus d’ananas",
+                    "price": "4€"
+                },
+                {
+                    "name": "Jus de tomate",
+                    "price": "4€"
+                },
+                {
+                    "name": "Perrier",
+                    "price": "4€"
+                },
+                {
+                    "name": "Evian",
+                    "price": "3€"
+                },
+                {
+                    "name": "San Pellegrino",
+                    "price": "3€"
+                },
+                {
+                    "name": "Sirop à l’eau",
+                    "price": "3€"
+                }
+            ],
+            "aperitifs": [
+                {
+                    "name": "Kir",
+                    "price": "5€"
+                },
+                {
+                    "name": "Pastis",
+                    "price": "4€"
+                },
+                {
+                    "name": "Porto",
+                    "price": "6€"
+                },
+                {
+                    "name": "Martini Blanc",
+                    "price": "6€"
+                },
+                {
+                    "name": "Martini Rouge",
+                    "price": "6€"
+                },
+                {
+                    "name": "Campari",
+                    "price": "6€"
+                }
+            ]
+        },
+        "sharing": [
+            {
+                "name": "Planche de fromages",
+                "price": "14€"
+            },
+            {
+                "name": "Planche mixte",
+                "price": "16€"
+            },
+            {
+                "name": "Planche de charcuterie",
+                "price": "15€"
+            }
+        ],
+        "starters": [
+            {
+                "name": "Velouté d’asperges",
+                "price": "8€"
+            },
+            {
+                "name": "Salade printanière",
+                "price": "9€"
+            },
+            {
+                "name": "Œuf parfait",
+                "price": "9€"
+            }
+        ],
+        "mains": [
+            {
+                "name": "Burger maison",
+                "price": "16€"
+            },
+            {
+                "name": "Risotto légumes de saison",
+                "price": "15€"
+            },
+            {
+                "name": "Poulet fermier rôti",
+                "price": "17€"
+            }
+        ],
+        "desserts": [
+            {
+                "name": "Tarte aux fraises",
+                "price": "7€"
+            },
+            {
+                "name": "Fondant chocolat",
+                "price": "7€"
+            },
+            {
+                "name": "Crème brûlée",
+                "price": "6€"
+            }
+        ]
+    }
+}
