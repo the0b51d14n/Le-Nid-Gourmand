@@ -389,4 +389,46 @@
         boot();
     }
 
+    /* =====================================================
+   PATCH season-core.js
+   Ajouter ce bloc dans la fonction applySeasonCSS(),
+   APRÈS le bloc "CSS footer saisonnier" et AVANT
+   le bloc "theme-color onglet mobile".
+
+   Emplacement exact : après ces lignes :
+   ─────────────────────────────────────────────────
+        if (!document.querySelector(`link[href="${hrefFooter}"]`)) {
+            const link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = hrefFooter;
+            document.head.appendChild(link);
+        }
+   ─────────────────────────────────────────────────
+   Insérer le bloc ci-dessous :
+===================================================== */
+
+    /* CSS fidélité saisonnier
+       Injecté uniquement sur les pages du module fidélité
+       (connexion, espace-client, admin). */
+    const IS_FIDELITE = window.location.pathname.includes("/fidelite/");
+
+    if (IS_FIDELITE) {
+        const hrefFidelite = `${BASE_PATH}assets/css/${season.key}/${season.key}-fidelite.css`;
+
+        if (!document.querySelector(`link[href="${hrefFidelite}"]`)) {
+            const link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = hrefFidelite;
+            document.head.appendChild(link);
+        }
+    }
+
+    /* =====================================================
+       FIN DU PATCH
+       Le reste de applySeasonCSS() continue normalement :
+       ─────────────────────────────────────────────────
+            /* theme-color onglet mobile
+            let meta = document.querySelector('meta[name="theme-color"]');
+            ...
+    ===================================================== */
 }());

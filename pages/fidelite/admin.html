@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin — Scanner | Le Nid Gourmand</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../../assets/css/fidelite/admin.css">
+
+    <style>
+        PLACEHOLDER_A_SUPPRIMER
+
+        /* ── Reset & Variables ── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bois: #6B3A22;
+            --bois-light: #8B5E3C;
+            --miel: #C8973A;
+            --fond: #F5EDE0;
+            --blanc: #FFFBF5;
+            --nuit: #2A1E14;
+            --vert-ok: #1E7A45;
+            --rouge-err: #C0392B;
+            --shadow: 0 8px 32px rgba(42, 30, 20, .12);
+            --radius: 20px;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: var(--fond);
+            color: var(--nuit);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px 80px;
+        }
+
+        /* ── Header ── */
+        .admin-header {
+            width: 100%;
+            max-width: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+        }
+
+        .admin-logo {
+            font-family: "Playfair Display", serif;
+            font-size: 1.2rem;
+            color: var(--bois);
+            text-decoration: none;
+        }
+
+        .admin-badge {
+            background: var(--bois);
+            color: var(--blanc);
+            font-size: .72rem;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        /* ── Login ── */
+        #screen-login {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        /* ── Cards ── */
+        .card {
+            background: var(--blanc);
+            border-radius: var(--radius);
+            padding: 32px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-family: "Playfair Display", serif;
+            font-size: 1.3rem;
+            color: var(--bois);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* ── Form elements ── */
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            font-size: .83rem;
+            font-weight: 500;
+            opacity: .65;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+        }
+
+        input[type="email"],
+        input[type="password"],
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1.5px solid rgba(107, 58, 34, .18);
+            border-radius: 12px;
+            font-family: "DM Sans", sans-serif;
+            font-size: .95rem;
+            background: var(--fond);
+            color: var(--nuit);
+            outline: none;
+            transition: border-color .2s;
+        }
+
+        input:focus {
+            border-color: var(--bois-light);
+        }
+
+        /* ── Boutons ── */
+        .btn-primary {
+            width: 100%;
+            padding: 14px;
+            background: var(--bois);
+            color: var(--blanc);
+            border: none;
+            border-radius: 14px;
+            font-family: "DM Sans", sans-serif;
+            font-size: .95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background .2s, transform .1s;
+            margin-top: 8px;
+        }
+
+        .btn-primary:hover {
+            background: var(--bois-light);
+        }
+
+        .btn-primary:active {
+            transform: scale(.98);
+        }
+
+        .btn-primary:disabled {
+            opacity: .45;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            padding: 10px 20px;
+            background: none;
+            border: 1.5px solid rgba(107, 58, 34, .3);
+            border-radius: 12px;
+            font-family: "DM Sans", sans-serif;
+            font-size: .88rem;
+            font-weight: 500;
+            color: var(--bois-light);
+            cursor: pointer;
+            transition: all .2s;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(107, 58, 34, .07);
+            border-color: var(--bois-light);
+        }
+
+        /* ── Messages ── */
+        .msg {
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: .88rem;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        .msg.visible {
+            display: block;
+        }
+
+        .msg.error {
+            background: #fdecea;
+            color: var(--rouge-err);
+            border: 1px solid rgba(192, 57, 43, .2);
+        }
+
+        .msg.success {
+            background: #eef8f2;
+            color: var(--vert-ok);
+            border: 1px solid rgba(30, 122, 69, .2);
+        }
+
+        .msg.info {
+            background: #fff8ee;
+            color: var(--bois);
+            border: 1px solid rgba(200, 151, 58, .3);
+        }
+
+        /* ── Scanner principal ── */
+        #screen-scanner {
+            width: 100%;
+            max-width: 520px;
+            display: none;
+        }
+
+        /* ── Zone caméra / scan ── */
+        .scan-zone {
+            position: relative;
+            background: #1a1a1a;
+            border-radius: var(--radius);
+            overflow: hidden;
+            aspect-ratio: 1;
+            max-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        #qr-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .scan-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .scan-frame {
+            width: 180px;
+            height: 180px;
+            position: relative;
+        }
+
+        .scan-frame::before,
+        .scan-frame::after,
+        .scan-frame span::before,
+        .scan-frame span::after {
+            content: "";
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            border-color: rgba(255, 255, 255, .85);
+            border-style: solid;
+        }
+
+        .scan-frame::before {
+            top: 0;
+            left: 0;
+            border-width: 3px 0 0 3px;
+            border-radius: 4px 0 0 0;
+        }
+
+        .scan-frame::after {
+            top: 0;
+            right: 0;
+            border-width: 3px 3px 0 0;
+            border-radius: 0 4px 0 0;
+        }
+
+        .scan-frame span::before {
+            bottom: 0;
+            left: 0;
+            border-width: 0 0 3px 3px;
+            border-radius: 0 0 0 4px;
+        }
+
+        .scan-frame span::after {
+            bottom: 0;
+            right: 0;
+            border-width: 0 3px 3px 0;
+            border-radius: 0 0 4px 0;
+        }
+
+        .scan-line {
+            position: absolute;
+            left: 10%;
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(200, 151, 58, .9), transparent);
+            animation: scan-anim 2s ease-in-out infinite;
+            border-radius: 2px;
+        }
+
+        @keyframes scan-anim {
+            0% {
+                top: 15%;
+            }
+
+            50% {
+                top: 85%;
+            }
+
+            100% {
+                top: 15%;
+            }
+        }
+
+        .scan-placeholder {
+            text-align: center;
+            color: rgba(255, 255, 255, .5);
+            font-size: .85rem;
+            padding: 20px;
+        }
+
+        .scan-placeholder .scan-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* ── Boutons scan ── */
+        .scan-btns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Séparateur "ou" */
+        .or-sep {
+            text-align: center;
+            font-size: .8rem;
+            opacity: .4;
+            margin: 12px 0;
+            position: relative;
+        }
+
+        .or-sep::before,
+        .or-sep::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 42%;
+            height: 1px;
+            background: currentColor;
+        }
+
+        .or-sep::before {
+            left: 0;
+        }
+
+        .or-sep::after {
+            right: 0;
+        }
+
+        /* ── Fiche client ── */
+        #client-card {
+            display: none;
+        }
+
+        .client-profile {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(107, 58, 34, .1);
+        }
+
+        .client-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--bois);
+            color: var(--blanc);
+            font-family: "Playfair Display", serif;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .client-name {
+            font-family: "Playfair Display", serif;
+            font-size: 1.2rem;
+            color: var(--bois);
+        }
+
+        .client-meta {
+            font-size: .8rem;
+            opacity: .55;
+            margin-top: 2px;
+        }
+
+        .client-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .stat-box {
+            background: var(--fond);
+            border-radius: 12px;
+            padding: 12px 10px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: "Playfair Display", serif;
+            font-size: 1.4rem;
+            color: var(--bois);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: .7rem;
+            opacity: .5;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+        }
+
+        .rang-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(107, 58, 34, .1);
+            color: var(--bois-light);
+            font-size: .8rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-top: 4px;
+        }
+
+        /* Récompenses actives */
+        .recompenses-actives {
+            margin-bottom: 20px;
+        }
+
+        .recompenses-actives h3 {
+            font-size: .82rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .07em;
+            opacity: .5;
+            margin-bottom: 10px;
+        }
+
+        .recomp-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #fff8ee;
+            border: 1px solid rgba(200, 151, 58, .3);
+            color: var(--bois);
+            font-size: .82rem;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin: 3px 4px 3px 0;
+        }
+
+        /* Montant addition */
+        .montant-section {
+            margin-bottom: 20px;
+        }
+
+        .montant-section label {
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            font-size: .8rem;
+            opacity: .55;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .montant-input-wrap {
+            position: relative;
+        }
+
+        .montant-input-wrap span {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+            opacity: .45;
+            pointer-events: none;
+        }
+
+        #montant-input {
+            padding-left: 36px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Aperçu réduction */
+        #reduction-preview {
+            display: none;
+            margin-top: 10px;
+            padding: 10px 14px;
+            background: #eef8f2;
+            border-radius: 10px;
+            font-size: .85rem;
+            color: var(--vert-ok);
+            border: 1px solid rgba(30, 122, 69, .15);
+        }
+
+        /* ── Bouton valider ── */
+        .btn-valider {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--bois), var(--bois-light));
+            color: var(--blanc);
+            border: none;
+            border-radius: 16px;
+            font-family: "DM Sans", sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity .2s, transform .1s;
+            box-shadow: 0 4px 16px rgba(107, 58, 34, .25);
+        }
+
+        .btn-valider:hover {
+            opacity: .9;
+        }
+
+        .btn-valider:active {
+            transform: scale(.98);
+        }
+
+        .btn-valider:disabled {
+            opacity: .45;
+            cursor: not-allowed;
+        }
+
+        /* ── Toast ── */
+        .toast {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: var(--nuit);
+            color: var(--blanc);
+            padding: 13px 24px;
+            border-radius: 40px;
+            font-size: .9rem;
+            font-weight: 500;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, .3);
+            transition: transform .35s cubic-bezier(.34, 1.56, .64, 1);
+            z-index: 999;
+            white-space: nowrap;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ── Barre admin ── */
+        .admin-bar {
+            width: 100%;
+            max-width: 520px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: .82rem;
+            opacity: .55;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 400px) {
+            .client-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .scan-btns {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div class="admin-header">
+        <a href="../../index.html" class="admin-logo">🐣 Le Nid Gourmand</a>
+        <span class="admin-badge">Interface Admin</span>
+    </div>
+
+    <!-- ══════════════════════════════
+         ÉCRAN LOGIN
+    ══════════════════════════════ -->
+    <div id="screen-login">
+        <div class="card">
+            <div class="card-title">🔐 Connexion Admin</div>
+            <div class="msg" id="login-msg"></div>
+
+            <div class="form-group">
+                <label for="admin-email">Email</label>
+                <input type="email" id="admin-email" placeholder="admin@lenidgourmand.fr" autocomplete="email">
+            </div>
+
+            <div class="form-group">
+                <label for="admin-password">Mot de passe</label>
+                <input type="password" id="admin-password" placeholder="••••••••" autocomplete="current-password">
+            </div>
+
+            <button class="btn-primary" id="btn-login">Se connecter</button>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════
+         ÉCRAN SCANNER
+    ══════════════════════════════ -->
+    <div id="screen-scanner">
+
+        <!-- Barre admin -->
+        <div class="admin-bar">
+            <span id="admin-name">Admin</span>
+            <button class="btn-secondary" id="btn-logout" style="font-size:.75rem;padding:6px 14px">Déconnexion</button>
+        </div>
+
+        <!-- Zone scan caméra -->
+        <div class="card" style="padding:20px">
+            <div class="card-title">📷 Scanner un QR code</div>
+
+            <div class="scan-zone" id="scan-zone">
+                <video id="qr-video" playsinline></video>
+                <div class="scan-overlay">
+                    <div class="scan-frame">
+                        <span></span>
+                        <div class="scan-line"></div>
+                    </div>
+                </div>
+                <div class="scan-placeholder" id="scan-placeholder">
+                    <span class="scan-icon">📲</span>
+                    Appuyez sur "Ouvrir caméra"<br>pour scanner
+                </div>
+            </div>
+
+            <div class="scan-btns">
+                <button class="btn-secondary" id="btn-camera">📷 Ouvrir caméra</button>
+                <button class="btn-secondary" id="btn-stop-camera" style="display:none">⏹ Arrêter</button>
+                <button class="btn-secondary" id="btn-manual">⌨️ Code manuel</button>
+            </div>
+
+            <!-- Saisie manuelle -->
+            <div id="manual-zone" style="display:none">
+                <div class="or-sep">ou saisir manuellement</div>
+                <div style="display:flex;gap:8px;margin-top:4px">
+                    <input type="text" id="manual-qr" placeholder="ex : NID-XXXXXX"
+                        style="text-transform:uppercase;flex:1;font-family:monospace">
+                    <button class="btn-secondary" id="btn-search-manual" style="white-space:nowrap">Chercher →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fiche client (masquée jusqu'au scan) -->
+        <div class="card" id="client-card">
+
+            <div class="msg" id="client-msg"></div>
+
+            <!-- Profil -->
+            <div class="client-profile">
+                <div class="client-avatar" id="cl-avatar">?</div>
+                <div>
+                    <div class="client-name" id="cl-name">—</div>
+                    <div class="client-meta" id="cl-email">—</div>
+                    <div class="rang-badge" id="cl-rang">🥚 Œuf</div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="client-stats">
+                <div class="stat-box">
+                    <span class="stat-value" id="cl-visites">0</span>
+                    <span class="stat-label">Visites</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-value" id="cl-points">0</span>
+                    <span class="stat-label">Points</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-value" id="cl-reduction">0%</span>
+                    <span class="stat-label">Réduction</span>
+                </div>
+            </div>
+
+            <!-- Récompenses actives -->
+            <div class="recompenses-actives" id="recomp-section" style="display:none">
+                <h3>🎁 Récompenses disponibles</h3>
+                <div id="recomp-list"></div>
+            </div>
+
+            <!-- Saisie montant -->
+            <div class="montant-section">
+                <label for="montant-input">Montant de l'addition (€)</label>
+                <div class="montant-input-wrap">
+                    <span>€</span>
+                    <input type="number" id="montant-input" placeholder="0.00" min="0" step="0.50">
+                </div>
+                <div id="reduction-preview"></div>
+            </div>
+
+            <!-- Note optionnelle -->
+            <div class="form-group">
+                <label for="note-input">Note (optionnel)</label>
+                <input type="text" id="note-input" placeholder="ex : table 5, anniversaire…">
+            </div>
+
+            <!-- Valider -->
+            <button class="btn-valider" id="btn-valider" disabled>
+                ✓ Valider la visite
+            </button>
+
+            <!-- Nouveau scan -->
+            <div style="text-align:center;margin-top:14px">
+                <button class="btn-secondary" id="btn-nouveau-scan">↩ Nouveau scan</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- jsQR pour le décodage caméra -->
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+
+    <script type="module">
+        import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+        /* ── Supabase ── */
+        const SUPABASE_URL = "https://qtrjvdpcsnpbjzxkywhy.supabase.co";
+        const SUPABASE_ANON_KEY = "sb_publishable_XPhqVncU41t7MoXhpWUSYQ_5p_-Zra2";
+        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        /* ── État global ── */
+        let currentClient = null;
+        let scannerRunning = false;
+        let videoStream = null;
+        let animFrame = null;
+        let adminEmail = "";
+
+        const RANG_LABELS = {
+            oeuf: "🥚 Œuf",
+            poussin: "🐣 Poussin",
+            oiseau: "🐦 Oiseau",
+            rapace: "🦅 Rapace",
+            phenix: "🔥 Phénix"
+        };
+
+        /* ════════════════════════════════
+           UTILS
+        ════════════════════════════════ */
+        function showToast(msg, duration = 2800) {
+            const t = document.getElementById("toast");
+            t.textContent = msg;
+            t.classList.add("show");
+            setTimeout(() => t.classList.remove("show"), duration);
+        }
+
+        function showMsg(id, text, type = "error") {
+            const el = document.getElementById(id);
+            el.textContent = text;
+            el.className = `msg ${type} visible`;
+        }
+
+        function hideMsg(id) {
+            const el = document.getElementById(id);
+            el.className = "msg";
+        }
+
+        function setLoading(btn, loading, label) {
+            btn.disabled = loading;
+            btn.textContent = loading ? "…" : label;
+        }
+
+        /* ════════════════════════════════
+           AUTH
+        ════════════════════════════════ */
+        async function checkSession() {
+            const { data } = await supabase.auth.getSession();
+            if (data.session?.user) {
+                adminEmail = data.session.user.email;
+                showScanner();
+            }
+        }
+
+        document.getElementById("btn-login").addEventListener("click", async () => {
+            const email = document.getElementById("admin-email").value.trim();
+            const pwd = document.getElementById("admin-password").value;
+
+            if (!email || !pwd) {
+                showMsg("login-msg", "Email et mot de passe requis.");
+                return;
+            }
+
+            setLoading(document.getElementById("btn-login"), true, "Se connecter");
+            hideMsg("login-msg");
+
+            const { data, error } = await supabase.auth.signInWithPassword({ email, password: pwd });
+
+            setLoading(document.getElementById("btn-login"), false, "Se connecter");
+
+            if (error) {
+                showMsg("login-msg", "Email ou mot de passe incorrect.");
+                return;
+            }
+
+            /* Vérifier si l'utilisateur a bien un rôle admin (metadata) */
+            const role = data.user.user_metadata?.role;
+            if (role !== "admin") {
+                await supabase.auth.signOut();
+                showMsg("login-msg", "Accès réservé au personnel du restaurant.");
+                return;
+            }
+
+            adminEmail = data.user.email;
+            showScanner();
+        });
+
+        document.getElementById("btn-logout").addEventListener("click", async () => {
+            await supabase.auth.signOut();
+            stopCamera();
+            document.getElementById("screen-scanner").style.display = "none";
+            document.getElementById("screen-login").style.display = "block";
+            document.getElementById("admin-email").value = "";
+            document.getElementById("admin-password").value = "";
+        });
+
+        function showScanner() {
+            document.getElementById("screen-login").style.display = "none";
+            document.getElementById("screen-scanner").style.display = "block";
+            document.getElementById("admin-name").textContent = adminEmail;
+        }
+
+        /* ════════════════════════════════
+           CAMÉRA / jsQR
+        ════════════════════════════════ */
+        document.getElementById("btn-camera").addEventListener("click", startCamera);
+        document.getElementById("btn-stop-camera").addEventListener("click", stopCamera);
+
+        async function startCamera() {
+            try {
+                videoStream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: "environment" }
+                });
+
+                const video = document.getElementById("qr-video");
+                video.srcObject = videoStream;
+                await video.play();
+
+                video.style.display = "block";
+                document.getElementById("scan-placeholder").style.display = "none";
+                document.getElementById("btn-camera").style.display = "none";
+                document.getElementById("btn-stop-camera").style.display = "";
+
+                scannerRunning = true;
+                scanFrame();
+
+            } catch (err) {
+                showToast("❌ Caméra inaccessible. Utilisez la saisie manuelle.");
+            }
+        }
+
+        function stopCamera() {
+            scannerRunning = false;
+            if (animFrame) cancelAnimationFrame(animFrame);
+            if (videoStream) { videoStream.getTracks().forEach(t => t.stop()); videoStream = null; }
+
+            const video = document.getElementById("qr-video");
+            video.style.display = "none";
+            video.srcObject = null;
+
+            document.getElementById("scan-placeholder").style.display = "block";
+            document.getElementById("btn-camera").style.display = "";
+            document.getElementById("btn-stop-camera").style.display = "none";
+        }
+
+        function scanFrame() {
+            if (!scannerRunning) return;
+
+            const video = document.getElementById("qr-video");
+            if (video.readyState !== video.HAVE_ENOUGH_DATA) {
+                animFrame = requestAnimationFrame(scanFrame);
+                return;
+            }
+
+            const canvas = document.createElement("canvas");
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const code = jsQR(imageData.data, imageData.width, imageData.height, {
+                inversionAttempts: "dontInvert"
+            });
+
+            if (code && code.data) {
+                stopCamera();
+                loadClientByQR(code.data);
+                return;
+            }
+
+            animFrame = requestAnimationFrame(scanFrame);
+        }
+
+        /* ════════════════════════════════
+           SAISIE MANUELLE
+        ════════════════════════════════ */
+        document.getElementById("btn-manual").addEventListener("click", () => {
+            const z = document.getElementById("manual-zone");
+            z.style.display = z.style.display === "none" ? "block" : "none";
+        });
+
+        document.getElementById("btn-search-manual").addEventListener("click", () => {
+            const code = document.getElementById("manual-qr").value.trim().toUpperCase();
+            if (!code) return;
+            loadClientByQR(code);
+        });
+
+        document.getElementById("manual-qr").addEventListener("keydown", e => {
+            if (e.key === "Enter") {
+                const code = e.target.value.trim().toUpperCase();
+                if (code) loadClientByQR(code);
+            }
+        });
+
+        /* ════════════════════════════════
+           CHARGER CLIENT
+        ════════════════════════════════ */
+        async function loadClientByQR(qrCode) {
+            hideMsg("client-msg");
+
+            const { data: client, error } = await supabase
+                .from("clients")
+                .select("*")
+                .eq("qr_code", qrCode)
+                .single();
+
+            if (error || !client) {
+                document.getElementById("client-card").style.display = "block";
+                showMsg("client-msg", `QR code introuvable : ${qrCode}`);
+                currentClient = null;
+                document.getElementById("btn-valider").disabled = true;
+                return;
+            }
+
+            currentClient = client;
+            renderClient(client);
+            document.getElementById("client-card").style.display = "block";
+            document.getElementById("manual-qr").value = "";
+            document.getElementById("manual-zone").style.display = "none";
+        }
+
+        async function renderClient(client) {
+            /* Avatar */
+            document.getElementById("cl-avatar").textContent =
+                (client.prenom || "?").charAt(0).toUpperCase();
+
+            /* Infos */
+            document.getElementById("cl-name").textContent = `${client.prenom} ${client.nom}`;
+            document.getElementById("cl-email").textContent = client.email || "";
+            document.getElementById("cl-rang").textContent = RANG_LABELS[client.niveau] || client.niveau;
+
+            /* Stats */
+            document.getElementById("cl-visites").textContent = client.visites_scannees ?? 0;
+            document.getElementById("cl-points").textContent = client.points ?? 0;
+
+            /* Récupérer la réduction du niveau */
+            const { data: niv } = await supabase
+                .from("niveaux")
+                .select("reduction_pct")
+                .eq("slug", client.niveau)
+                .single();
+
+            const reduction = niv?.reduction_pct ?? 0;
+            document.getElementById("cl-reduction").textContent = `${reduction}%`;
+
+            /* Récompenses actives */
+            const { data: recomp } = await supabase
+                .from("recompenses")
+                .select("*")
+                .eq("client_id", client.id)
+                .eq("utilisee", false)
+                .order("created_at", { ascending: false });
+
+            const recompSection = document.getElementById("recomp-section");
+            const recompList = document.getElementById("recomp-list");
+            recompList.innerHTML = "";
+
+            if (recomp && recomp.length > 0) {
+                recompSection.style.display = "block";
+                recomp.forEach(r => {
+                    const pill = document.createElement("span");
+                    pill.className = "recomp-pill";
+                    pill.textContent = r.description || r.type;
+                    recompList.appendChild(pill);
+                });
+            } else {
+                recompSection.style.display = "none";
+            }
+
+            /* Réinitialise le formulaire */
+            document.getElementById("montant-input").value = "";
+            document.getElementById("note-input").value = "";
+            document.getElementById("reduction-preview").style.display = "none";
+            document.getElementById("btn-valider").disabled = false;
+        }
+
+        /* Aperçu réduction en direct */
+        document.getElementById("montant-input").addEventListener("input", () => {
+            const montant = parseFloat(document.getElementById("montant-input").value);
+            const prev = document.getElementById("reduction-preview");
+
+            if (!currentClient || isNaN(montant) || montant <= 0) {
+                prev.style.display = "none";
+                return;
+            }
+
+            /* On affiche juste l'aperçu — la vraie réduction est calculée par le trigger */
+            document.getElementById("cl-reduction").textContent.replace("%", "");
+            const redTxt = document.getElementById("cl-reduction").textContent;
+
+            prev.style.display = "block";
+            prev.innerHTML = `Montant brut : <strong>${montant.toFixed(2)} €</strong> — la réduction <strong>${redTxt}</strong> sera appliquée automatiquement.`;
+        });
+
+        /* ════════════════════════════════
+           VALIDER LA VISITE
+        ════════════════════════════════ */
+        document.getElementById("btn-valider").addEventListener("click", async () => {
+            if (!currentClient) return;
+
+            const montantBrut = parseFloat(document.getElementById("montant-input").value);
+            if (isNaN(montantBrut) || montantBrut < 0) {
+                showMsg("client-msg", "Entrez un montant valide.", "error");
+                return;
+            }
+
+            const note = document.getElementById("note-input").value.trim();
+            const btn = document.getElementById("btn-valider");
+
+            btn.disabled = true;
+            btn.textContent = "Enregistrement…";
+            hideMsg("client-msg");
+
+            const { data: visite, error } = await supabase
+                .from("visites")
+                .insert({
+                    client_id: currentClient.id,
+                    montant_brut: montantBrut,
+                    scanne_par: adminEmail,
+                    note: note || null
+                })
+                .select()
+                .single();
+
+            if (error) {
+                showMsg("client-msg", "Erreur lors de l'enregistrement. Réessayez.", "error");
+                btn.disabled = false;
+                btn.textContent = "✓ Valider la visite";
+                return;
+            }
+
+            /* Succès */
+            const ptsGagnes = visite.points_gagnes ?? 0;
+            const net = visite.montant_net ?? montantBrut;
+            const red = visite.reduction_pct ?? 0;
+
+            showMsg("client-msg",
+                `✅ Visite enregistrée ! Montant net : ${net.toFixed(2)} € (−${red}%). +${ptsGagnes} pts crédités.`,
+                "success"
+            );
+
+            showToast(`✅ ${currentClient.prenom} — visite enregistrée !`);
+
+            btn.textContent = "✓ Enregistré !";
+            document.getElementById("montant-input").value = "";
+            document.getElementById("note-input").value = "";
+            document.getElementById("reduction-preview").style.display = "none";
+
+            /* Rafraîchir les stats du client */
+            const { data: updated } = await supabase
+                .from("clients")
+                .select("*")
+                .eq("id", currentClient.id)
+                .single();
+
+            if (updated) {
+                currentClient = updated;
+                document.getElementById("cl-visites").textContent = updated.visites_scannees ?? 0;
+                document.getElementById("cl-points").textContent = updated.points ?? 0;
+                document.getElementById("cl-rang").textContent = RANG_LABELS[updated.niveau] || updated.niveau;
+            }
+
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.textContent = "✓ Valider la visite";
+            }, 3000);
+        });
+
+        /* ════════════════════════════════
+           NOUVEAU SCAN
+        ════════════════════════════════ */
+        document.getElementById("btn-nouveau-scan").addEventListener("click", () => {
+            currentClient = null;
+            document.getElementById("client-card").style.display = "none";
+            hideMsg("client-msg");
+        });
+
+        /* ── Démarrage ── */
+        checkSession();
+    </script>
+
+</body>
+
+</html>

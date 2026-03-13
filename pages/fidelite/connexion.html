@@ -15,6 +15,13 @@
     <link rel="stylesheet" href="../../assets/css/header.css">
     <link rel="stylesheet" href="../../assets/css/footer.css">
     <link rel="stylesheet" href="../../assets/css/fidelite/connexion.css">
+
+    <!-- Préconnexion à l'API des saisons -->
+    <link rel="preconnect" href="https://aa.usno.navy.mil">
+    <!--
+        Le CSS saisonnier est injecté automatiquement
+        par season-core.js — ne pas ajouter de lien ici.
+    -->
 </head>
 
 <body>
@@ -186,6 +193,7 @@
 
     <div id="footer"></div>
 
+    <script src="../../assets/js/season-core.js"></script>
     <script src="../../assets/js/script.js"></script>
     <script type="module" src="../../assets/js/fidelite/connexion.js"></script>
 
