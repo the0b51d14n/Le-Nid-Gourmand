@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon espace fidélité | Le Nid Gourmand</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/header.css">
+    <link rel="stylesheet" href="../../assets/css/footer.css">
+    <link rel="stylesheet" href="../../assets/css/fidelite/espace-client.css">
+</head>
+
+<body>
+
+    <div id="header"></div>
+
+    <main class="ec-page">
+
+        <!-- ── Skeleton affiché pendant le chargement ── -->
+        <div class="ec-skeleton" id="ec-skeleton">
+            <div class="sk-hero"></div>
+            <div class="sk-grid">
+                <div class="sk-card"></div>
+                <div class="sk-card"></div>
+                <div class="sk-card"></div>
+                <div class="sk-card"></div>
+            </div>
+        </div>
+
+        <!-- ── Contenu réel (masqué jusqu'au chargement) ── -->
+        <div class="ec-content" id="ec-content" style="display:none">
+
+            <!-- HERO PROFIL -->
+            <section class="ec-hero">
+                <div class="ec-hero-inner container">
+                    <div class="ec-avatar" id="ec-avatar">?</div>
+                    <div class="ec-hero-text">
+                        <h1 id="ec-nom">Chargement…</h1>
+                        <p class="ec-membre-depuis" id="ec-depuis"></p>
+                    </div>
+                    <button class="ec-logout-btn" id="ec-logout">Se déconnecter</button>
+                </div>
+            </section>
+
+            <div class="ec-grid container">
+
+                <!-- RANG -->
+                <div class="ec-card ec-card--rang" id="card-rang">
+                    <div class="ec-card-header">
+                        <span class="ec-card-icon" id="rang-emoji">🥚</span>
+                        <h2 class="ec-card-title">Mon rang</h2>
+                    </div>
+                    <div class="ec-rang-label" id="rang-label">Œuf</div>
+                    <div class="ec-rang-desc" id="rang-desc"></div>
+
+                    <div class="ec-progress-wrap">
+                        <div class="ec-progress-bar">
+                            <div class="ec-progress-fill" id="rang-progress"></div>
+                        </div>
+                        <p class="ec-progress-label" id="rang-progress-label"></p>
+                    </div>
+
+                    <ul class="ec-avantages" id="rang-avantages"></ul>
+                </div>
+
+                <!-- POINTS -->
+                <div class="ec-card ec-card--points">
+                    <div class="ec-card-header">
+                        <span class="ec-card-icon">🌟</span>
+                        <h2 class="ec-card-title">Mes points</h2>
+                    </div>
+                    <div class="ec-points-big" id="points-total">—</div>
+                    <p class="ec-points-sub">2€ dépensés = 1 point</p>
+
+                    <div class="ec-catalogue" id="ec-catalogue">
+                        <!-- Rempli par client.js -->
+                    </div>
+                </div>
+
+                <!-- QR CODE -->
+                <div class="ec-card ec-card--qr">
+                    <div class="ec-card-header">
+                        <span class="ec-card-icon">📲</span>
+                        <h2 class="ec-card-title">Mon QR code</h2>
+                    </div>
+                    <p class="ec-qr-hint">Présentez ce code à chaque visite pour cumuler vos points.</p>
+                    <div class="ec-qr-wrap" id="ec-qr">
+                        <!-- Rempli par client.js via QRCode lib -->
+                    </div>
+                    <div class="ec-qr-code-text" id="ec-qr-text"></div>
+                </div>
+
+                <!-- RÉCOMPENSES -->
+                <div class="ec-card ec-card--recompenses">
+                    <div class="ec-card-header">
+                        <span class="ec-card-icon">🎁</span>
+                        <h2 class="ec-card-title">Mes récompenses</h2>
+                    </div>
+                    <div class="ec-recompenses-list" id="ec-recompenses">
+                        <!-- Rempli par client.js -->
+                    </div>
+                </div>
+
+                <!-- PARRAINAGE -->
+                <div class="ec-card ec-card--parrainage">
+                    <div class="ec-card-header">
+                        <span class="ec-card-icon">🤝</span>
+                        <h2 class="ec-card-title">Parrainage</h2>
+                    </div>
+                    <p class="ec-parrain-hint">Partagez votre code — votre filleul s'inscrit, vous gagnez <strong>50
+                            points</strong> à sa première visite.</p>
+                    <div class="ec-parrain-code-wrap">
+                        <span class="ec-parrain-code" id="ec-parrain-code">——</span>
+                        <button class="ec-copy-btn" id="ec-copy-parrain" title="Copier le code">📋</button>
+                    </div>
+                    <a class="ec-parrain-invite" id="ec-parrain-invite" href="#">
+                        Inviter un ami →
+                    </a>
+                </div>
+
+                <!-- HISTORIQUE VISITES -->
+                <div class="ec-card ec-card--historique">
+                    <div class="ec-card-header">
+                        <span class="ec-card-icon">🕒</span>
+                        <h2 class="ec-card-title">Historique des visites</h2>
+                    </div>
+                    <div class="ec-visites-list" id="ec-visites">
+                        <!-- Rempli par client.js -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="../../assets/js/script.js"></script>
+    <!-- Lib QR code légère (pas de dépendance npm) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script type="module" src="../../assets/js/fidelite/client.js"></script>
+
+</body>
+
+</html>

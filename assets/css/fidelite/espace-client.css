@@ -1,0 +1,601 @@
+/* ================================================
+   espace-client.css
+   Design de l'espace client fidélité
+   Ton : chaleureux, naturel, cohérent avec le site
+   ================================================ */
+
+
+/* ── Page ── */
+
+.ec-page {
+    min-height: 100vh;
+    padding-bottom: 80px;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+
+/* ════════════════════════════════════════════════
+   SKELETON LOADER
+════════════════════════════════════════════════ */
+
+.ec-skeleton {
+    padding-top: 120px;
+}
+
+.sk-hero {
+    height: 160px;
+    background: linear-gradient(90deg, #eee 25%, #f5f5f5 50%, #eee 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite;
+    margin-bottom: 40px;
+}
+
+.sk-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.sk-card {
+    height: 220px;
+    border-radius: 24px;
+    background: linear-gradient(90deg, #eee 25%, #f5f5f5 50%, #eee 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite;
+}
+
+.sk-card:nth-child(2) {
+    animation-delay: .15s;
+}
+
+.sk-card:nth-child(3) {
+    animation-delay: .30s;
+}
+
+.sk-card:nth-child(4) {
+    animation-delay: .45s;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+
+/* ════════════════════════════════════════════════
+   HERO PROFIL
+════════════════════════════════════════════════ */
+
+.ec-hero {
+    background: var(--bois, #8B5E3C);
+    padding: 100px 0 48px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.ec-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 10% 50%, rgba(255, 255, 255, .08) 0%, transparent 55%),
+        radial-gradient(ellipse at 90% 20%, rgba(255, 255, 255, .06) 0%, transparent 45%);
+    pointer-events: none;
+}
+
+.ec-hero-inner {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+.ec-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .20);
+    border: 2px solid rgba(255, 255, 255, .35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Playfair Display", serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: white;
+    flex-shrink: 0;
+}
+
+.ec-hero-text {
+    flex: 1;
+}
+
+.ec-hero-text h1 {
+    color: white;
+    font-size: 1.8rem;
+    margin-bottom: 4px;
+}
+
+.ec-membre-depuis {
+    color: rgba(255, 255, 255, .70);
+    font-size: .88rem;
+    margin: 0;
+}
+
+.ec-logout-btn {
+    background: rgba(255, 255, 255, .15);
+    border: 1px solid rgba(255, 255, 255, .30);
+    color: white;
+    padding: 9px 18px;
+    border-radius: 20px;
+    font-family: "DM Sans", sans-serif;
+    font-size: .85rem;
+    cursor: pointer;
+    transition: background .2s ease;
+    white-space: nowrap;
+}
+
+.ec-logout-btn:hover {
+    background: rgba(255, 255, 255, .25);
+}
+
+
+/* ════════════════════════════════════════════════
+   GRILLE DE CARDS
+════════════════════════════════════════════════ */
+
+.ec-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+@media (max-width: 700px) {
+    .ec-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ════════════════════════════════════════════════
+   CARD BASE
+════════════════════════════════════════════════ */
+
+.ec-card {
+    background: var(--blanc, #fff);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, .07);
+    animation: fadeUp .5s ease both;
+}
+
+.ec-card:nth-child(2) {
+    animation-delay: .08s;
+}
+
+.ec-card:nth-child(3) {
+    animation-delay: .16s;
+}
+
+.ec-card:nth-child(4) {
+    animation-delay: .24s;
+}
+
+.ec-card:nth-child(5) {
+    animation-delay: .32s;
+}
+
+.ec-card:nth-child(6) {
+    animation-delay: .40s;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Historique et parrainage prennent toute la largeur */
+.ec-card--historique,
+.ec-card--parrainage {
+    grid-column: 1 / -1;
+}
+
+.ec-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.ec-card-icon {
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+.ec-card-title {
+    font-family: "Playfair Display", serif;
+    font-size: 1.15rem;
+    margin: 0;
+}
+
+
+/* ════════════════════════════════════════════════
+   CARD RANG
+════════════════════════════════════════════════ */
+
+.ec-rang-label {
+    font-family: "Playfair Display", serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--bois, #8B5E3C);
+    margin-bottom: 4px;
+}
+
+.ec-rang-desc {
+    font-size: .85rem;
+    opacity: .60;
+    margin-bottom: 20px;
+}
+
+.ec-progress-wrap {
+    margin-bottom: 20px;
+}
+
+.ec-progress-bar {
+    height: 8px;
+    background: rgba(0, 0, 0, .08);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.ec-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--bois, #8B5E3C), #C8973A);
+    border-radius: 8px;
+    transition: width .8s cubic-bezier(.4, 0, .2, 1);
+    width: 0%;
+}
+
+.ec-progress-label {
+    font-size: .78rem;
+    opacity: .55;
+    margin: 0;
+}
+
+.ec-avantages {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+}
+
+.ec-avantages li {
+    font-size: .85rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.ec-avantages li::before {
+    content: "✓";
+    color: var(--bois, #8B5E3C);
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+
+/* ════════════════════════════════════════════════
+   CARD POINTS
+════════════════════════════════════════════════ */
+
+.ec-points-big {
+    font-family: "Playfair Display", serif;
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--bois, #8B5E3C);
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.ec-points-sub {
+    font-size: .82rem;
+    opacity: .50;
+    margin: 0 0 20px;
+}
+
+/* Catalogue d'échange */
+.ec-catalogue {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ec-catalogue-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    background: var(--fond, #F7F5EE);
+    border-radius: 12px;
+    gap: 10px;
+}
+
+.ec-catalogue-info {
+    flex: 1;
+}
+
+.ec-catalogue-label {
+    font-size: .88rem;
+    font-weight: 500;
+    display: block;
+}
+
+.ec-catalogue-cost {
+    font-size: .75rem;
+    opacity: .55;
+}
+
+.ec-catalogue-btn {
+    background: var(--bois, #8B5E3C);
+    color: white;
+    border: none;
+    padding: 7px 14px;
+    border-radius: 10px;
+    font-family: "DM Sans", sans-serif;
+    font-size: .8rem;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background .2s, opacity .2s;
+}
+
+.ec-catalogue-btn:hover:not(:disabled) {
+    background: var(--vert-foret, #2F4A3A);
+}
+
+.ec-catalogue-btn:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+
+/* ════════════════════════════════════════════════
+   CARD QR CODE
+════════════════════════════════════════════════ */
+
+.ec-qr-hint {
+    font-size: .85rem;
+    opacity: .60;
+    margin: 0 0 16px;
+}
+
+.ec-qr-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.ec-qr-wrap canvas,
+.ec-qr-wrap img {
+    border-radius: 12px;
+    border: 6px solid var(--fond, #F7F5EE);
+}
+
+.ec-qr-code-text {
+    text-align: center;
+    font-size: .75rem;
+    opacity: .40;
+    font-family: monospace;
+    letter-spacing: .05em;
+    word-break: break-all;
+}
+
+
+/* ════════════════════════════════════════════════
+   CARD RÉCOMPENSES
+════════════════════════════════════════════════ */
+
+.ec-recompenses-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ec-recompense-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1.5px solid rgba(139, 94, 60, .15);
+    background: rgba(139, 94, 60, .04);
+    gap: 12px;
+}
+
+.ec-recompense-info {
+    flex: 1;
+}
+
+.ec-recompense-type {
+    font-size: .88rem;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 3px;
+}
+
+.ec-recompense-expiry {
+    font-size: .75rem;
+    opacity: .50;
+}
+
+.ec-recompense-btn {
+    background: none;
+    border: 1.5px solid var(--bois, #8B5E3C);
+    color: var(--bois, #8B5E3C);
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-family: "DM Sans", sans-serif;
+    font-size: .8rem;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all .2s;
+}
+
+.ec-recompense-btn:hover {
+    background: var(--bois, #8B5E3C);
+    color: white;
+}
+
+.ec-empty {
+    text-align: center;
+    opacity: .45;
+    font-size: .88rem;
+    padding: 20px 0;
+    font-style: italic;
+}
+
+
+/* ════════════════════════════════════════════════
+   CARD PARRAINAGE
+════════════════════════════════════════════════ */
+
+.ec-parrain-hint {
+    font-size: .88rem;
+    opacity: .70;
+    margin: 0 0 16px;
+}
+
+.ec-parrain-code-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.ec-parrain-code {
+    font-family: monospace;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: .15em;
+    color: var(--bois, #8B5E3C);
+    background: var(--fond, #F7F5EE);
+    padding: 10px 20px;
+    border-radius: 12px;
+    flex: 1;
+    text-align: center;
+}
+
+.ec-copy-btn {
+    background: var(--fond, #F7F5EE);
+    border: none;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background .2s;
+}
+
+.ec-copy-btn:hover {
+    background: #e8e0d0;
+}
+
+.ec-parrain-invite {
+    display: inline-block;
+    font-size: .88rem;
+    color: var(--bois, #8B5E3C);
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1px;
+    transition: opacity .2s;
+}
+
+.ec-parrain-invite:hover {
+    opacity: .70;
+}
+
+
+/* ════════════════════════════════════════════════
+   CARD HISTORIQUE VISITES
+════════════════════════════════════════════════ */
+
+.ec-visites-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ec-visite-item {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 16px;
+    background: var(--fond, #F7F5EE);
+    border-radius: 12px;
+    font-size: .88rem;
+}
+
+.ec-visite-date {
+    opacity: .55;
+    font-size: .80rem;
+}
+
+.ec-visite-montant {
+    font-weight: 500;
+}
+
+.ec-visite-pts {
+    color: var(--bois, #8B5E3C);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+
+/* ════════════════════════════════════════════════
+   TOAST NOTIFICATION
+════════════════════════════════════════════════ */
+
+.ec-toast {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--bois, #8B5E3C);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: .9rem;
+    font-weight: 500;
+    z-index: 9999;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+    transition: transform .3s cubic-bezier(.34, 1.56, .64, 1);
+    white-space: nowrap;
+}
+
+.ec-toast.visible {
+    transform: translateX(-50%) translateY(0);
+}

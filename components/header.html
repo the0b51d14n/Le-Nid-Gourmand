@@ -13,6 +13,17 @@
             <a href="../pages/galerie.html">Galerie</a>
             <a href="../pages/contact.html">Contact</a>
 
+            <!-- Affiché si non connecté — masqué par header-auth.js si session active -->
+            <a href="../pages/fidelite/connexion.html" class="nav-fidelite nav-fidelite--guest">
+                🐣 Fidélité
+            </a>
+
+            <!-- Affiché si connecté — masqué par défaut -->
+            <a href="../pages/fidelite/espace-client.html" class="nav-fidelite nav-fidelite--member"
+                style="display:none">
+                🐣 Mon compte
+            </a>
+
         </nav>
 
         <button class="menu-toggle" aria-label="Ouvrir le menu">

@@ -1,0 +1,421 @@
+/* ================================================
+   connexion.css
+   Styles de la page connexion / inscription fidélité
+   ================================================ */
+
+
+/* ── Page ── */
+
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 20px 80px;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+
+/* ── Carte centrale ── */
+
+.auth-card {
+    width: 100%;
+    max-width: 500px;
+    background: var(--blanc);
+    border-radius: 32px;
+    padding: 48px 44px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .10);
+    position: relative;
+    z-index: 10;
+}
+
+
+/* ── Logo ── */
+
+.auth-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.auth-logo img {
+    height: 64px;
+    width: auto;
+}
+
+
+/* ── Titre ── */
+
+.auth-card h1 {
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+.auth-subtitle {
+    text-align: center;
+    font-size: .9rem;
+    opacity: .65;
+    margin: 0 0 28px;
+}
+
+
+/* ── Bannière email confirmé ── */
+
+.confirmed-banner {
+    display: none;
+    background: #EEF8F2;
+    color: #1E7A45;
+    border: 1px solid rgba(30, 122, 69, .20);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: .9rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.confirmed-banner.visible {
+    display: block;
+}
+
+
+/* ── Onglets ── */
+
+.auth-tabs {
+    display: flex;
+    background: var(--fond, #F7F5EE);
+    border-radius: 14px;
+    padding: 4px;
+    margin-bottom: 24px;
+    gap: 4px;
+}
+
+.auth-tab {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: none;
+    border-radius: 10px;
+    font-family: "DM Sans", sans-serif;
+    font-size: .9rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: inherit;
+    opacity: .50;
+    transition: all .2s ease;
+    position: relative;
+    z-index: 10;
+}
+
+.auth-tab.active {
+    background: var(--blanc);
+    opacity: 1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+}
+
+
+/* ── Formulaires ── */
+
+.auth-form {
+    display: none;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+
+/* ── Grille deux colonnes (prénom / nom) ── */
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+
+/* ── Groupe de champ ── */
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: .82rem;
+    font-weight: 500;
+    opacity: .70;
+    margin-bottom: 7px;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+}
+
+
+/* ── Badges obligatoire / optionnel ── */
+
+.badge {
+    font-size: .70rem;
+    font-weight: 500;
+    padding: 2px 7px;
+    border-radius: 20px;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.badge-required {
+    background: rgba(139, 94, 60, .12);
+    color: var(--bois, #8B5E3C);
+}
+
+.badge-optional {
+    background: rgba(0, 0, 0, .06);
+    opacity: .60;
+}
+
+
+/* ── Inputs ── */
+
+.form-group input {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1.5px solid rgba(0, 0, 0, .12);
+    border-radius: 12px;
+    font-family: "DM Sans", sans-serif;
+    font-size: .95rem;
+    background: var(--fond, #F7F5EE);
+    color: inherit;
+    transition: border-color .2s ease, box-shadow .2s ease;
+    outline: none;
+    --webkit-appearance: none;
+}
+
+.form-group input:focus {
+    border-color: var(--bois, #8B5E3C);
+    box-shadow: 0 0 0 3px rgba(139, 94, 60, .10);
+    background: var(--blanc);
+}
+
+.form-group input.invalid {
+    border-color: #C0392B;
+    box-shadow: 0 0 0 3px rgba(192, 57, 43, .08);
+}
+
+.form-group input.valid {
+    border-color: #1E7A45;
+}
+
+.form-group input::placeholder {
+    opacity: .40;
+}
+
+
+/* ── Wrapper mot de passe + bouton œil ── */
+
+.pwd-wrap {
+    position: relative;
+}
+
+.pwd-wrap input {
+    padding-right: 44px;
+}
+
+.pwd-toggle {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: .45;
+    font-size: 1.1rem;
+    padding: 0;
+    line-height: 1;
+    transition: opacity .2s;
+}
+
+.pwd-toggle:hover {
+    opacity: .85;
+}
+
+
+/* ── Indicateur force mot de passe ── */
+
+.pwd-strength {
+    display: flex;
+    gap: 4px;
+    height: 3px;
+    margin-top: 6px;
+}
+
+.pwd-strength span {
+    flex: 1;
+    border-radius: 2px;
+    background: rgba(0, 0, 0, .10);
+    transition: background .3s ease;
+}
+
+.pwd-strength[data-level="1"] span:nth-child(1) {
+    background: #E74C3C;
+}
+
+.pwd-strength[data-level="2"] span:nth-child(-n+2) {
+    background: #E67E22;
+}
+
+.pwd-strength[data-level="3"] span:nth-child(-n+3) {
+    background: #F1C40F;
+}
+
+.pwd-strength[data-level="4"] span {
+    background: #1E7A45;
+}
+
+.pwd-strength-label {
+    font-size: .75rem;
+    opacity: .55;
+    margin-top: 4px;
+    min-height: 1em;
+}
+
+
+/* ── Erreur inline par champ ── */
+
+.field-error {
+    display: none;
+    font-size: .78rem;
+    color: #C0392B;
+    margin-top: 5px;
+}
+
+.field-error.visible {
+    display: block;
+}
+
+
+/* ── Hint parrainage ── */
+
+.parrain-hint {
+    font-size: .78rem;
+    opacity: .50;
+    margin-top: 6px;
+    margin-bottom: 0;
+}
+
+
+/* ── Message global (erreur / succès) ── */
+
+.auth-message {
+    display: none;
+    padding: 14px 16px;
+    border-radius: 12px;
+    font-size: .88rem;
+    margin-bottom: 20px;
+    line-height: 1.55;
+}
+
+.auth-message.error {
+    display: block;
+    background: #FEF0EE;
+    color: #C0392B;
+    border: 1px solid rgba(192, 57, 43, .20);
+}
+
+.auth-message.success {
+    display: block;
+    background: #EEF8F2;
+    color: #1E7A45;
+    border: 1px solid rgba(30, 122, 69, .20);
+}
+
+
+/* ── Bouton principal ── */
+
+.btn-auth {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 14px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    background: var(--bois, #8B5E3C);
+    color: white;
+    margin-top: 8px;
+    transition: background .2s ease, transform .15s ease, box-shadow .2s ease;
+    box-shadow: 0 4px 16px rgba(139, 94, 60, .25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-auth:hover:not(:disabled) {
+    background: var(--vert-foret, #2F4A3A);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 22px rgba(47, 74, 58, .28);
+}
+
+.btn-auth:disabled {
+    opacity: .55;
+    cursor: not-allowed;
+}
+
+
+/* ── Spinner ── */
+
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, .35);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin .7s linear infinite;
+    flex-shrink: 0;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* ── Lien mot de passe oublié ── */
+
+.forgot-link {
+    display: block;
+    text-align: right;
+    font-size: .82rem;
+    opacity: .55;
+    margin-top: -8px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity .2s;
+}
+
+.forgot-link:hover {
+    opacity: 1;
+}
+
+
+/* ── Responsive ── */
+
+@media (max-width: 540px) {
+
+    .auth-card {
+        padding: 36px 22px;
+        border-radius: 24px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}

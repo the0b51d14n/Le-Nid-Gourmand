@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon compte fidélité | Le Nid Gourmand</title>
+    <meta name="description" content="Connectez-vous ou créez votre compte fidélité Le Nid Gourmand.">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/header.css">
+    <link rel="stylesheet" href="../../assets/css/footer.css">
+    <link rel="stylesheet" href="../../assets/css/fidelite/connexion.css">
+</head>
+
+<body>
+
+    <div id="header"></div>
+
+    <main>
+        <section class="auth-page">
+            <div class="auth-card">
+
+                <div class="auth-logo">
+                    <img src="../../assets/images/logo/logo sans fond.png" alt="Le Nid Gourmand">
+                </div>
+
+                <h1>Programme fidélité</h1>
+                <p class="auth-subtitle">Cumulez des points et profitez d'avantages exclusifs</p>
+
+                <!-- Bannière email confirmé (visible après clic sur le lien de vérification) -->
+                <div class="confirmed-banner" id="confirmed-banner">
+                    ✅ Votre email a bien été confirmé. Vous pouvez maintenant vous connecter !
+                </div>
+
+                <!-- Onglets -->
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-tab="connexion" type="button">Se connecter</button>
+                    <button class="auth-tab" data-tab="inscription" type="button">Créer un compte</button>
+                </div>
+
+                <!-- Message global -->
+                <div class="auth-message" id="auth-msg"></div>
+
+
+                <!-- ════════════════════════════════
+                     FORMULAIRE CONNEXION
+                ════════════════════════════════ -->
+                <form class="auth-form active" id="form-connexion" novalidate>
+
+                    <div class="form-group">
+                        <label for="login-email">
+                            Email
+                            <span class="badge badge-required">obligatoire</span>
+                        </label>
+                        <input type="email" id="login-email" placeholder="votre@email.fr" autocomplete="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="login-password">
+                            Mot de passe
+                            <span class="badge badge-required">obligatoire</span>
+                        </label>
+                        <div class="pwd-wrap">
+                            <input type="password" id="login-password" placeholder="••••••••"
+                                autocomplete="current-password" required>
+                            <button type="button" class="pwd-toggle" data-target="login-password"
+                                aria-label="Afficher">👁</button>
+                        </div>
+                    </div>
+
+                    <span class="forgot-link" id="btn-forgot">Mot de passe oublié ?</span>
+
+                    <button type="submit" class="btn-auth" id="btn-login">Se connecter</button>
+
+                </form>
+
+
+                <!-- ════════════════════════════════
+                     FORMULAIRE INSCRIPTION
+                ════════════════════════════════ -->
+                <form class="auth-form" id="form-inscription" novalidate>
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="reg-prenom">
+                                Prénom
+                                <span class="badge badge-required">obligatoire</span>
+                            </label>
+                            <input type="text" id="reg-prenom" placeholder="Jean" autocomplete="given-name" required>
+                            <span class="field-error" id="err-prenom"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reg-nom">
+                                Nom
+                                <span class="badge badge-required">obligatoire</span>
+                            </label>
+                            <input type="text" id="reg-nom" placeholder="Dupont" autocomplete="family-name" required>
+                            <span class="field-error" id="err-nom"></span>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-email">
+                            Email
+                            <span class="badge badge-required">obligatoire</span>
+                        </label>
+                        <input type="email" id="reg-email" placeholder="votre@email.fr" autocomplete="email" required>
+                        <span class="field-error" id="err-email"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-tel">
+                            Téléphone
+                            <span class="badge badge-required">obligatoire</span>
+                        </label>
+                        <input type="tel" id="reg-tel" placeholder="06 00 00 00 00" autocomplete="tel" required>
+                        <span class="field-error" id="err-tel"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-naissance">
+                            Date de naissance
+                            <span class="badge badge-required">obligatoire</span>
+                        </label>
+                        <input type="date" id="reg-naissance" autocomplete="bday" required>
+                        <span class="field-error" id="err-naissance"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-password">
+                            Mot de passe
+                            <span class="badge badge-required">obligatoire</span>
+                        </label>
+                        <div class="pwd-wrap">
+                            <input type="password" id="reg-password" placeholder="8 caractères minimum"
+                                autocomplete="new-password" required minlength="8">
+                            <button type="button" class="pwd-toggle" data-target="reg-password"
+                                aria-label="Afficher">👁</button>
+                        </div>
+                        <div class="pwd-strength" id="pwd-strength" data-level="0">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                        <div class="pwd-strength-label" id="pwd-strength-label"></div>
+                        <span class="field-error" id="err-password"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-password-confirm">
+                            Confirmer le mot de passe
+                            <span class="badge badge-required">obligatoire</span>
+                        </label>
+                        <div class="pwd-wrap">
+                            <input type="password" id="reg-password-confirm" placeholder="••••••••"
+                                autocomplete="new-password" required>
+                            <button type="button" class="pwd-toggle" data-target="reg-password-confirm"
+                                aria-label="Afficher">👁</button>
+                        </div>
+                        <span class="field-error" id="err-confirm"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-parrain">
+                            Code parrainage
+                            <span class="badge badge-optional">optionnel</span>
+                        </label>
+                        <input type="text" id="reg-parrain" placeholder="ex : AB12CD34" maxlength="8">
+                        <p class="parrain-hint">🎁 Un ami vous a parrainé ? Entrez son code pour lui offrir 50 points
+                            bonus.</p>
+                    </div>
+
+                    <button type="submit" class="btn-auth" id="btn-register">Créer mon compte</button>
+
+                </form>
+
+            </div>
+        </section>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="../../assets/js/script.js"></script>
+    <script type="module" src="../../assets/js/fidelite/connexion.js"></script>
+
+</body>
+
+</html>
