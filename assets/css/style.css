@@ -121,6 +121,26 @@ section {
 
 }
 
+/* Voile noir universel — améliore le contraste du texte sur toutes les saisons */
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, .15);
+
+    pointer-events: none;
+
+    z-index: 1;
+
+}
+
 .hero-border {
 
     position: absolute;
@@ -152,14 +172,32 @@ section {
     position: relative;
     z-index: 2;
 
+}
+
+/* Force le texte en blanc dans le hero quelle que soit la saison.
+   La double imbrication .hero .hero-content bat h1,h2,h3 { color } global. */
+.hero .hero-content,
+.hero .hero-content h1,
+.hero .hero-content h2,
+.hero .hero-content h3,
+.hero .hero-content p {
+
     color: white;
 
 }
 
-.hero-content h1,
-.hero-content p {
+/* Ombre portée pour détacher le texte du logo clair en arrière-plan */
+.hero .hero-content h1 {
 
-    color: white;
+    text-shadow:
+        0 2px 12px rgba(0, 0, 0, .65),
+        0 4px 30px rgba(0, 0, 0, .40);
+
+}
+
+.hero .hero-content p {
+
+    text-shadow: 0 1px 8px rgba(0, 0, 0, .70);
 
 }
 

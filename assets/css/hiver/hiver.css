@@ -106,14 +106,15 @@ h3 {
 
 }
 
-.hero h1 {
-    color: var(--neige);
-    text-shadow: 0 2px 20px rgba(10, 22, 40, .60);
+.hero .hero-content h1 {
+    background: linear-gradient(135deg, #f5a623 0%, #c45a1a 40%, #8b2e0a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-.hero p {
-    color: var(--givre);
-    text-shadow: 0 1px 12px rgba(10, 22, 40, .50);
+.hero .hero-content p {
+    color: #e8956a;
 }
 
 

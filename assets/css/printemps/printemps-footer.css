@@ -1,0 +1,36 @@
+/* ================================================
+   PRINTEMPS — Footer
+   Surcharge de footer.css avec la palette printanière
+   ================================================ */
+
+.site-footer {
+
+    background: var(--bois);
+    color: white;
+
+}
+
+/* titres */
+
+.footer-col h3,
+.footer-col h4 {
+
+    color: white;
+
+}
+
+/* liens */
+
+.footer-col a {
+
+    color: white;
+
+}
+
+/* crédit */
+
+.footer-credit a {
+
+    color: var(--beige-chaud);
+
+}

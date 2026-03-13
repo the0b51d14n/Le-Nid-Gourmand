@@ -1,0 +1,114 @@
+/* ================================================
+   HIVER — Footer
+   Surcharge de footer.css avec la palette hivernale
+   ================================================ */
+
+.site-footer {
+
+    background: linear-gradient(160deg, #060E1C 0%, #0A1628 60%, #0D1530 100%);
+
+    color: var(--givre);
+
+    position: relative;
+    overflow: hidden;
+
+}
+
+/* halo aurore en arrière-plan */
+.site-footer::before {
+
+    content: "";
+
+    position: absolute;
+    top: -80px;
+    right: -60px;
+
+    width: 400px;
+    height: 400px;
+
+    background:
+        radial-gradient(circle, rgba(174, 239, 255, .07) 0%, transparent 65%);
+
+    pointer-events: none;
+
+}
+
+.site-footer::after {
+
+    content: "";
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background: linear-gradient(90deg,
+            var(--nuit),
+            var(--bleu-profond) 20%,
+            var(--aurore) 40%,
+            var(--lavande) 60%,
+            var(--rose) 78%,
+            var(--nuit));
+
+    pointer-events: none;
+
+}
+
+/* titres */
+
+.footer-col h3,
+.footer-col h4 {
+
+    color: var(--aurore);
+
+}
+
+/* textes */
+
+.footer-col p {
+
+    color: rgba(207, 239, 255, .80);
+
+}
+
+/* liens */
+
+.footer-col a {
+
+    color: var(--givre);
+
+}
+
+.footer-col a:hover {
+
+    color: var(--aurore);
+
+    opacity: 1;
+
+}
+
+/* séparation bas */
+
+.footer-bottom {
+
+    border-top-color: rgba(174, 239, 255, .15);
+
+    color: rgba(207, 239, 255, .65);
+
+}
+
+/* crédit */
+
+.footer-credit a {
+
+    color: var(--lavande);
+
+}
+
+.footer-credit a:hover {
+
+    color: var(--rose);
+
+}
