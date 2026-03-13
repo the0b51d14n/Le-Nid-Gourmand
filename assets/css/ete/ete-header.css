@@ -1,0 +1,62 @@
+/* ================================================
+   ÉTÉ — Header
+   Surcharge de header.css avec la palette estivale
+   ================================================ */
+
+/* Conteneur principal — fond sable translucide */
+.header-container {
+
+    background: rgba(242, 228, 196, .40);
+
+    border: 1px solid rgba(200, 105, 26, .20);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+}
+
+/* Liens de navigation */
+.nav a {
+
+    color: var(--mer-profonde);
+
+}
+
+/* Burger mobile */
+.menu-toggle {
+
+    color: var(--mer-profonde);
+
+}
+
+/* Menu mobile déroulant */
+@media (max-width: 768px) {
+
+    .nav {
+
+        background: rgba(251, 245, 230, .96);
+
+        border: 1px solid rgba(200, 105, 26, .15);
+
+    }
+
+}
+
+/* ── Au scroll ── */
+
+.site-header.scrolled .header-container {
+
+    background: rgba(251, 245, 230, .92);
+
+    border-color: rgba(200, 105, 26, .25);
+
+    box-shadow: 0 4px 24px rgba(200, 105, 26, .12);
+
+}
+
+.site-header.scrolled .nav a,
+.site-header.scrolled .menu-toggle {
+
+    color: var(--mer-profonde);
+
+}

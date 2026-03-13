@@ -1,0 +1,57 @@
+/* ================================================
+   PRINTEMPS — Header
+   ================================================ */
+
+.header-container {
+
+    background: rgba(247, 245, 238, .55);
+
+    border: 1px solid rgba(47, 74, 58, .15);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+}
+
+.nav a {
+
+    color: var(--vert-foret);
+
+}
+
+.menu-toggle {
+
+    color: var(--vert-foret);
+
+}
+
+@media (max-width: 768px) {
+
+    .nav {
+
+        background: rgba(247, 245, 238, .95);
+
+        border: 1px solid rgba(47, 74, 58, .15);
+
+    }
+
+}
+
+/* ── Au scroll ── */
+
+.site-header.scrolled .header-container {
+
+    background: rgba(247, 245, 238, .92);
+
+    border-color: rgba(47, 74, 58, .20);
+
+    box-shadow: 0 4px 24px rgba(47, 74, 58, .12);
+
+}
+
+.site-header.scrolled .nav a,
+.site-header.scrolled .menu-toggle {
+
+    color: var(--vert-foret);
+
+}
