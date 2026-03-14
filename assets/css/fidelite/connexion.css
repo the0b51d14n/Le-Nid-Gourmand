@@ -419,3 +419,23 @@
         gap: 0;
     }
 }
+
+
+/* ── Bouton retour accueil ── */
+
+.btn-retour {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: .85rem;
+    font-weight: 500;
+    color: var(--bois, #8B5E3C);
+    opacity: .60;
+    text-decoration: none;
+    margin-bottom: 20px;
+    transition: opacity .2s ease;
+}
+
+.btn-retour:hover {
+    opacity: 1;
+}

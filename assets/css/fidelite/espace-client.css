@@ -151,6 +151,22 @@
     background: rgba(255, 255, 255, .25);
 }
 
+.ec-retour-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: .85rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, .70);
+    text-decoration: none;
+    transition: color .2s ease;
+    white-space: nowrap;
+}
+
+.ec-retour-btn:hover {
+    color: #fff;
+}
+
 
 /* ════════════════════════════════════════════════
    GRILLE DE CARDS

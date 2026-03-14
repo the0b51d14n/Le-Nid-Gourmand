@@ -5,6 +5,7 @@
    ===================================================== */
 
 import { inscrire, connecter, motDePasseOublie, getUser, traduireErreur } from "./auth.js";
+import { supabase } from "./supabase.js";
 
 
 /* ════════════════════════════════════════════════════
@@ -16,6 +17,47 @@ import { inscrire, connecter, motDePasseOublie, getUser, traduireErreur } from "
 init();
 
 async function init() {
+
+    /* ── Gérer le token de confirmation email ──────────
+       Quand l'utilisateur clique sur le lien mail,
+       Supabase redirige vers cette page avec un fragment
+       #access_token=...&type=signup dans l'URL.
+       On établit la session puis on redirige direct
+       vers l'espace client → l'utilisateur est connecté.
+    ─────────────────────────────────────────────────── */
+    const hash = new URLSearchParams(window.location.hash.replace("#", "?"));
+    const tokenType = hash.get("type");
+
+    if (hash.get("access_token") && tokenType === "signup") {
+        /* getSession() lit le hash et établit la session automatiquement */
+        const { data, error } = await supabase.auth.getSession();
+
+        if (!error && data.session) {
+            /* ✅ Connecté → espace client directement */
+            window.location.replace("/pages/fidelite/espace-client.html");
+        } else {
+            /* Échec inattendu → on affiche la page normalement */
+            console.error("[connexion.js] Échec établissement session :", error);
+            afficherPage();
+        }
+        return;
+    }
+
+    /* ── Gérer le token de reset mot de passe ──────────
+       Même principe pour le flow "mot de passe oublié"
+    ─────────────────────────────────────────────────── */
+    if (hash.get("access_token") && tokenType === "recovery") {
+        await supabase.auth.getSession();
+        /* Affiche la page en mode reset (à implémenter si besoin) */
+        afficherPage();
+        return;
+    }
+
+    afficherPage();
+}
+
+
+async function afficherPage() {
 
     /* Redirige si déjà connecté */
     const user = await getUser();
@@ -153,7 +195,6 @@ function fieldError(id, msg) {
     el.textContent = msg;
     el.classList.toggle("visible", !!msg);
 
-    /* Marque l'input parent comme invalide */
     const wrap = el.closest(".form-group");
     const input = wrap?.querySelector("input");
     if (input) input.classList.toggle("invalid", !!msg);
@@ -261,7 +302,7 @@ function bindFormInscription() {
             });
 
             showMsg(
-                "🎉 Compte créé ! Un email de vérification vous a été envoyé. Cliquez sur le lien pour activer votre compte.",
+                "🎉 Compte créé ! Un email de vérification vous a été envoyé. Cliquez sur le lien pour accéder directement à votre espace client.",
                 "success"
             );
             e.target.reset();

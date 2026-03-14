@@ -1,0 +1,158 @@
+/* ================================================
+   ÉTÉ — Page espace client
+   Palette : soleil, sable, mer turquoise
+   ================================================ */
+
+body {
+    background: var(--fond);
+    color: var(--mer-profonde);
+    background-image:
+        radial-gradient(ellipse at 20% 10%, rgba(248, 201, 122, .10) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 90%, rgba(200, 105, 26, .06) 0%, transparent 60%);
+}
+
+/* ── Hero profil ── */
+.ec-hero {
+    background: linear-gradient(135deg, var(--mer-profonde), var(--mer));
+}
+
+.ec-hero::before {
+    background:
+        radial-gradient(ellipse at 10% 50%, rgba(245, 201, 122, .12) 0%, transparent 55%),
+        radial-gradient(ellipse at 90% 20%, rgba(74, 155, 168, .10) 0%, transparent 45%);
+}
+
+.ec-hero h1,
+#ec-nom {
+    color: var(--blanc);
+}
+
+.ec-membre-depuis {
+    color: rgba(255, 253, 245, .70);
+}
+
+.ec-avatar {
+    background: rgba(255, 255, 255, .18);
+    border-color: rgba(255, 255, 255, .30);
+}
+
+.ec-logout-btn {
+    border-color: rgba(255, 255, 255, .40);
+    color: var(--blanc);
+}
+
+.ec-logout-btn:hover {
+    background: rgba(255, 255, 255, .15);
+}
+
+/* ── Cards ── */
+.ec-card {
+    background: var(--blanc);
+    box-shadow: 0 4px 20px rgba(42, 110, 122, .08);
+}
+
+.ec-card-title {
+    color: var(--mer-profonde);
+}
+
+/* ── Rang ── */
+.ec-rang-label {
+    color: var(--mer-profonde);
+}
+
+.ec-progress-fill {
+    background: linear-gradient(90deg, var(--mer-profonde), var(--soleil));
+}
+
+.ec-avantages li::before {
+    color: var(--mer-profonde);
+}
+
+/* ── Points ── */
+.ec-points-big {
+    color: var(--mer-profonde);
+}
+
+.ec-catalogue-item {
+    background: var(--sable);
+}
+
+.ec-catalogue-btn {
+    background: var(--soleil);
+    color: var(--blanc);
+}
+
+.ec-catalogue-btn:hover:not(:disabled) {
+    background: var(--terracotta);
+}
+
+/* ── QR ── */
+.ec-qr-wrap canvas,
+.ec-qr-wrap img {
+    border-color: var(--sable);
+}
+
+/* ── Récompenses ── */
+.ec-recompense-item {
+    border-color: rgba(200, 105, 26, .15);
+    background: rgba(245, 201, 122, .06);
+}
+
+.ec-recompense-btn {
+    border-color: var(--soleil);
+    color: var(--soleil);
+}
+
+.ec-recompense-btn:hover {
+    background: var(--soleil);
+    color: var(--blanc);
+}
+
+/* ── Parrainage ── */
+.ec-parrain-code {
+    color: var(--mer-profonde);
+    background: var(--sable);
+}
+
+.ec-parrain-invite {
+    color: var(--mer-profonde);
+}
+
+.ec-copy-btn {
+    background: var(--sable);
+}
+
+.ec-copy-btn:hover {
+    background: var(--sable-fonce);
+}
+
+/* ── Historique ── */
+.ec-visite-item {
+    background: var(--sable);
+}
+
+.ec-visite-pts {
+    color: var(--soleil);
+}
+
+/* ── Toast ── */
+.ec-toast {
+    background: var(--mer-profonde);
+    color: var(--blanc);
+}
+
+/* ── Skeleton ── */
+.sk-hero,
+.sk-card {
+    background: linear-gradient(90deg, #e8d8b0 25%, #f5edd0 50%, #e8d8b0 75%);
+    background-size: 200% 100%;
+}
+
+/* ── Bouton retour accueil ── */
+.ec-retour-btn {
+    color: rgba(255, 255, 255, .70);
+}
+
+.ec-retour-btn:hover {
+    color: var(--blanc);
+}

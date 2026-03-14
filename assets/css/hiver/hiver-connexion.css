@@ -1,0 +1,152 @@
+/* ================================================
+   HIVER — Page connexion / inscription
+   Palette : nuit polaire, aurore boréale, givre
+   ================================================ */
+
+body {
+    background: var(--fond);
+    color: var(--neige);
+    background-image:
+        radial-gradient(ellipse at 15% 20%, rgba(174, 239, 255, .08) 0%, transparent 50%),
+        radial-gradient(ellipse at 85% 80%, rgba(220, 214, 255, .08) 0%, transparent 50%);
+}
+
+/* ── Carte ── */
+.auth-card {
+    background: var(--nuit-douce);
+    border: 1px solid rgba(174, 239, 255, .15);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .40);
+}
+
+.auth-card h1 {
+    color: var(--neige);
+}
+
+.auth-subtitle {
+    color: var(--givre);
+    opacity: .80;
+}
+
+/* ── Onglets ── */
+.auth-tabs {
+    background: rgba(10, 22, 40, .60);
+    border: 1px solid rgba(174, 239, 255, .10);
+}
+
+.auth-tab {
+    color: var(--givre);
+}
+
+.auth-tab.active {
+    background: rgba(174, 239, 255, .12);
+    color: var(--aurore);
+}
+
+/* ── Labels ── */
+.form-group label {
+    color: var(--givre);
+}
+
+/* ── Inputs ── */
+.form-group input {
+    background: rgba(10, 22, 40, .60);
+    border-color: rgba(174, 239, 255, .20);
+    color: var(--neige);
+}
+
+.form-group input::placeholder {
+    color: rgba(207, 239, 255, .30);
+}
+
+.form-group input:focus {
+    border-color: var(--aurore);
+    box-shadow: 0 0 0 3px rgba(174, 239, 255, .10);
+    background: rgba(15, 32, 64, .80);
+}
+
+/* ── Bouton ── */
+.btn-auth {
+    background: linear-gradient(135deg, var(--bleu-profond), #88C4FF);
+    color: var(--nuit);
+    font-weight: 600;
+    box-shadow: 0 4px 20px rgba(92, 169, 255, .40);
+}
+
+.btn-auth:hover {
+    opacity: .90;
+}
+
+/* ── Badges ── */
+.badge-required {
+    background: rgba(174, 239, 255, .12);
+    color: var(--aurore);
+}
+
+.badge-optional {
+    background: rgba(255, 255, 255, .06);
+    color: var(--givre);
+    opacity: .80;
+}
+
+/* ── Mot de passe oublié ── */
+.forgot-link {
+    color: var(--bleu-profond);
+}
+
+/* ── Erreurs ── */
+.field-error {
+    color: #FF8FA3;
+}
+
+.auth-message {
+    color: #FF8FA3;
+}
+
+/* ── Toggle mot de passe ── */
+.pwd-toggle {
+    color: var(--givre);
+}
+
+/* ── Hint parrainage ── */
+.parrain-hint {
+    color: var(--givre);
+}
+
+/* ── Bannière confirmée ── */
+.confirmed-banner {
+    background: rgba(92, 169, 255, .12);
+    color: var(--aurore);
+    border-color: rgba(174, 239, 255, .20);
+}
+
+/* ── Force mot de passe ── */
+.pwd-strength span {
+    background: rgba(174, 239, 255, .15);
+}
+
+.pwd-strength[data-level="1"] span:nth-child(1) {
+    background: #FF6B6B;
+}
+
+.pwd-strength[data-level="2"] span:nth-child(-n+2) {
+    background: var(--lavande);
+}
+
+.pwd-strength[data-level="3"] span:nth-child(-n+3) {
+    background: var(--aurore);
+}
+
+.pwd-strength[data-level="4"] span {
+    background: var(--bleu-profond);
+}
+
+/* ── Bouton retour accueil ── */
+.btn-retour {
+    color: var(--givre);
+    opacity: .60;
+}
+
+.btn-retour:hover {
+    opacity: 1;
+    color: var(--aurore);
+}

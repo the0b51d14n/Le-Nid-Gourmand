@@ -1,0 +1,106 @@
+/* ================================================
+   AUTOMNE — Page connexion / inscription
+   Palette : rouille, miel, brun teck
+   ================================================ */
+
+body {
+    background: var(--fond);
+    color: var(--nuit-automne);
+    background-image:
+        radial-gradient(ellipse at 15% 85%, rgba(158, 61, 26, .08) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 10%, rgba(200, 151, 58, .10) 0%, transparent 55%);
+}
+
+.auth-card {
+    background: var(--blanc);
+    box-shadow: 0 20px 60px rgba(42, 30, 20, .12);
+}
+
+.auth-card h1 {
+    color: var(--nuit-automne);
+}
+
+.auth-subtitle {
+    color: var(--nuit-automne);
+    opacity: .70;
+}
+
+/* ── Onglets ── */
+.auth-tabs {
+    background: rgba(200, 151, 58, .14);
+}
+
+.auth-tab {
+    color: var(--nuit-automne);
+}
+
+.auth-tab.active {
+    background: var(--blanc);
+    color: var(--nuit-automne);
+}
+
+/* ── Inputs ── */
+.form-group input {
+    background: var(--fond);
+    border-color: rgba(107, 58, 34, .18);
+    color: var(--nuit-automne);
+}
+
+.form-group input:focus {
+    border-color: var(--rouille);
+    box-shadow: 0 0 0 3px rgba(158, 61, 26, .10);
+    background: var(--blanc);
+}
+
+/* ── Bouton ── */
+.btn-auth {
+    background: var(--rouille);
+    color: var(--blanc);
+    box-shadow: 0 4px 14px rgba(158, 61, 26, .28);
+}
+
+.btn-auth:hover {
+    background: var(--teck);
+}
+
+/* ── Badges ── */
+.badge-required {
+    background: rgba(158, 61, 26, .10);
+    color: var(--rouille);
+}
+
+/* ── Mot de passe oublié ── */
+.forgot-link {
+    color: var(--rouille-clair);
+}
+
+/* ── Force mot de passe ── */
+.pwd-strength span {
+    background: rgba(107, 58, 34, .15);
+}
+
+.pwd-strength[data-level="1"] span:nth-child(1) {
+    background: #C0392B;
+}
+
+.pwd-strength[data-level="2"] span:nth-child(-n+2) {
+    background: var(--miel);
+}
+
+.pwd-strength[data-level="3"] span:nth-child(-n+3) {
+    background: var(--rouille-clair);
+}
+
+.pwd-strength[data-level="4"] span {
+    background: var(--rouille);
+}
+
+/* ── Bouton retour accueil ── */
+.btn-retour {
+    color: var(--rouille);
+    opacity: .60;
+}
+
+.btn-retour:hover {
+    opacity: 1;
+}

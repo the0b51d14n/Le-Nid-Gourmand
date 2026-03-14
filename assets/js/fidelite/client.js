@@ -44,6 +44,22 @@ async function init() {
 
     } catch (err) {
         console.error("[client.js]", err);
+
+        /* ── Déconnexion automatique si le profil est introuvable ──
+           Code PGRST116 = 0 rows retournés par .single()
+           Arrive quand le trigger n'a pas créé le profil,
+           ou que la session est corrompue / orpheline.
+        ────────────────────────────────────────────────────────── */
+        if (err?.code === "PGRST116" || err?.message?.includes("0 rows")) {
+            showToast("⚠️ Profil introuvable. Déconnexion en cours…", 3000);
+            setTimeout(async () => {
+                await supabase.auth.signOut();
+                window.location.href = "/pages/fidelite/connexion.html?erreur=profil_introuvable";
+            }, 2500);
+            return;
+        }
+
+        /* Autres erreurs réseau / serveur */
         showToast("Erreur de chargement. Rechargez la page.", 5000);
     }
 
@@ -188,7 +204,7 @@ function renderPoints(client, catalogue) {
         div.innerHTML = `
             <div class="ec-catalogue-info">
                 <span class="ec-catalogue-label">${item.label}</span>
-                <span class="ec-catalogue-cost">${item.cout_points} pts · valeur ~${item.valeur_euros}€</span>
+                <span class="ec-catalogue-cost">${item.cout_points} pts</span>
             </div>
             <button class="ec-catalogue-btn" data-type="${item.type}" ${canAfford ? "" : "disabled"}>
                 ${canAfford ? "Échanger" : `${item.cout_points} pts`}

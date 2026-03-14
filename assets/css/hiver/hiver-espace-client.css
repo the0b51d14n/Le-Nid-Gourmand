@@ -1,0 +1,233 @@
+/* ================================================
+   HIVER — Page espace client
+   Palette : nuit polaire, aurore boréale, givre
+   ================================================ */
+
+body {
+    background: var(--fond);
+    color: var(--neige);
+    background-image:
+        radial-gradient(ellipse at 15% 20%, rgba(174, 239, 255, .08) 0%, transparent 50%),
+        radial-gradient(ellipse at 85% 80%, rgba(220, 214, 255, .08) 0%, transparent 50%);
+}
+
+/* ── Hero profil ── */
+.ec-hero {
+    background: linear-gradient(135deg, var(--nuit) 0%, var(--nuit-douce) 100%);
+    border-bottom: 1px solid rgba(174, 239, 255, .10);
+}
+
+.ec-hero::before {
+    background:
+        radial-gradient(ellipse at 10% 50%, rgba(174, 239, 255, .06) 0%, transparent 55%),
+        radial-gradient(ellipse at 90% 20%, rgba(220, 214, 255, .06) 0%, transparent 45%);
+}
+
+.ec-hero h1,
+#ec-nom {
+    color: var(--neige);
+}
+
+.ec-membre-depuis {
+    color: var(--givre);
+    opacity: .70;
+}
+
+.ec-avatar {
+    background: rgba(174, 239, 255, .15);
+    border-color: rgba(174, 239, 255, .25);
+    color: var(--aurore);
+}
+
+.ec-logout-btn {
+    border-color: rgba(174, 239, 255, .30);
+    color: var(--givre);
+}
+
+.ec-logout-btn:hover {
+    background: rgba(174, 239, 255, .08);
+    color: var(--neige);
+}
+
+/* ── Cards ── */
+.ec-card {
+    background: var(--nuit-douce);
+    border: 1px solid rgba(174, 239, 255, .10);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .30);
+    color: var(--neige);
+}
+
+.ec-card-title {
+    color: var(--aurore);
+}
+
+/* ── Rang ── */
+.ec-rang-label {
+    color: var(--aurore);
+}
+
+.ec-rang-desc {
+    color: var(--givre);
+}
+
+.ec-progress-bar {
+    background: rgba(174, 239, 255, .10);
+}
+
+.ec-progress-fill {
+    background: linear-gradient(90deg, var(--bleu-profond), var(--aurore));
+}
+
+.ec-progress-label {
+    color: var(--givre);
+}
+
+.ec-avantages li {
+    color: var(--givre);
+}
+
+.ec-avantages li::before {
+    color: var(--aurore);
+}
+
+/* ── Points ── */
+.ec-points-big {
+    color: var(--aurore);
+}
+
+.ec-points-sub {
+    color: var(--givre);
+}
+
+.ec-catalogue-item {
+    background: rgba(10, 22, 40, .60);
+    border: 1px solid rgba(174, 239, 255, .08);
+}
+
+.ec-catalogue-label {
+    color: var(--neige);
+}
+
+.ec-catalogue-cost {
+    color: var(--givre);
+}
+
+.ec-catalogue-btn {
+    background: linear-gradient(135deg, var(--bleu-profond), #88C4FF);
+    color: var(--nuit);
+    font-weight: 600;
+}
+
+.ec-catalogue-btn:hover:not(:disabled) {
+    opacity: .85;
+}
+
+/* ── QR ── */
+.ec-qr-hint {
+    color: var(--givre);
+}
+
+.ec-qr-wrap canvas,
+.ec-qr-wrap img {
+    border-color: rgba(174, 239, 255, .15);
+}
+
+.ec-qr-code-text {
+    color: var(--givre);
+}
+
+/* ── Récompenses ── */
+.ec-recompense-item {
+    border-color: rgba(174, 239, 255, .12);
+    background: rgba(10, 22, 40, .40);
+}
+
+.ec-recompense-type {
+    color: var(--neige);
+}
+
+.ec-recompense-expiry {
+    color: var(--givre);
+}
+
+.ec-recompense-btn {
+    border-color: var(--aurore);
+    color: var(--aurore);
+}
+
+.ec-recompense-btn:hover {
+    background: var(--aurore);
+    color: var(--nuit);
+}
+
+.ec-empty {
+    color: var(--givre);
+}
+
+/* ── Parrainage ── */
+.ec-parrain-hint {
+    color: var(--givre);
+}
+
+.ec-parrain-code {
+    color: var(--aurore);
+    background: rgba(10, 22, 40, .60);
+    border: 1px solid rgba(174, 239, 255, .15);
+}
+
+.ec-copy-btn {
+    background: rgba(10, 22, 40, .60);
+    border: 1px solid rgba(174, 239, 255, .12);
+}
+
+.ec-copy-btn:hover {
+    background: rgba(174, 239, 255, .10);
+}
+
+.ec-parrain-invite {
+    color: var(--bleu-profond);
+}
+
+/* ── Historique ── */
+.ec-visite-item {
+    background: rgba(10, 22, 40, .50);
+    border: 1px solid rgba(174, 239, 255, .08);
+}
+
+.ec-visite-date {
+    color: var(--givre);
+}
+
+.ec-visite-montant {
+    color: var(--neige);
+}
+
+.ec-visite-pts {
+    color: var(--aurore);
+}
+
+/* ── Toast ── */
+.ec-toast {
+    background: var(--nuit-douce);
+    border: 1px solid rgba(174, 239, 255, .20);
+    color: var(--neige);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, .40);
+}
+
+/* ── Skeleton ── */
+.sk-hero,
+.sk-card {
+    background: linear-gradient(90deg, #0f2040 25%, #162840 50%, #0f2040 75%);
+    background-size: 200% 100%;
+}
+
+/* ── Bouton retour accueil ── */
+.ec-retour-btn {
+    color: var(--givre);
+    opacity: .70;
+}
+
+.ec-retour-btn:hover {
+    color: var(--aurore);
+    opacity: 1;
+}

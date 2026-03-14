@@ -1,0 +1,155 @@
+/* ================================================
+   PRINTEMPS — Page espace client
+   Palette : vert forêt, beige chaud, bois
+   ================================================ */
+
+body {
+    background: var(--fond);
+    color: var(--vert-foret);
+}
+
+/* ── Hero profil ── */
+.ec-hero {
+    background: var(--vert-foret);
+}
+
+.ec-hero::before {
+    background:
+        radial-gradient(ellipse at 10% 50%, rgba(255, 255, 255, .08) 0%, transparent 55%),
+        radial-gradient(ellipse at 90% 20%, rgba(216, 224, 166, .10) 0%, transparent 45%);
+}
+
+.ec-hero h1,
+#ec-nom {
+    color: var(--blanc);
+}
+
+.ec-membre-depuis {
+    color: rgba(255, 255, 255, .70);
+}
+
+.ec-avatar {
+    background: rgba(255, 255, 255, .18);
+    border-color: rgba(255, 255, 255, .30);
+}
+
+.ec-logout-btn {
+    border-color: rgba(255, 255, 255, .40);
+    color: var(--blanc);
+}
+
+.ec-logout-btn:hover {
+    background: rgba(255, 255, 255, .15);
+}
+
+/* ── Cards ── */
+.ec-card {
+    background: var(--blanc);
+    box-shadow: 0 4px 20px rgba(47, 74, 58, .08);
+}
+
+.ec-card-title {
+    color: var(--vert-foret);
+}
+
+/* ── Rang ── */
+.ec-rang-label {
+    color: var(--vert-foret);
+}
+
+.ec-progress-fill {
+    background: linear-gradient(90deg, var(--vert-foret), var(--bois));
+}
+
+.ec-avantages li::before {
+    color: var(--vert-foret);
+}
+
+/* ── Points ── */
+.ec-points-big {
+    color: var(--vert-foret);
+}
+
+.ec-catalogue-item {
+    background: var(--fond);
+}
+
+.ec-catalogue-btn {
+    background: var(--vert-foret);
+    color: var(--blanc);
+}
+
+.ec-catalogue-btn:hover:not(:disabled) {
+    background: var(--bois);
+}
+
+/* ── QR ── */
+.ec-qr-wrap canvas,
+.ec-qr-wrap img {
+    border-color: var(--fond);
+}
+
+/* ── Récompenses ── */
+.ec-recompense-item {
+    border-color: rgba(47, 74, 58, .15);
+    background: rgba(47, 74, 58, .03);
+}
+
+.ec-recompense-btn {
+    border-color: var(--vert-foret);
+    color: var(--vert-foret);
+}
+
+.ec-recompense-btn:hover {
+    background: var(--vert-foret);
+    color: var(--blanc);
+}
+
+/* ── Parrainage ── */
+.ec-parrain-code {
+    color: var(--vert-foret);
+    background: var(--fond);
+}
+
+.ec-parrain-invite {
+    color: var(--vert-foret);
+}
+
+.ec-copy-btn {
+    background: var(--fond);
+}
+
+.ec-copy-btn:hover {
+    background: var(--vert-clair);
+}
+
+/* ── Historique ── */
+.ec-visite-item {
+    background: var(--fond);
+}
+
+.ec-visite-pts {
+    color: var(--vert-foret);
+}
+
+/* ── Toast ── */
+.ec-toast {
+    background: var(--vert-foret);
+    color: var(--blanc);
+}
+
+/* ── Skeleton ── */
+.sk-hero,
+.sk-card {
+    background: linear-gradient(90deg, #d8e0b0 25%, #e8f0c0 50%, #d8e0b0 75%);
+    background-size: 200% 100%;
+}
+
+/* ── Bouton retour accueil ── */
+.ec-retour-btn {
+    color: rgba(255, 255, 255, .70);
+}
+
+.ec-retour-btn:hover {
+    color: var(--blanc);
+}

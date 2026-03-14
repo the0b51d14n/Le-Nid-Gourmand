@@ -6,9 +6,10 @@
    1. signUp() → tout le profil est passé dans
       user_metadata (prenom, nom, tel, naissance, parrain)
    2. Supabase envoie l'email de confirmation
-   3. Le client clique sur le lien → email_confirmed_at
-      se met à jour dans auth.users
-   4. Le trigger handle_new_user() insère automatiquement
+   3. Le client clique sur le lien → redirigé vers connexion.html
+   4. connexion.js détecte le token, établit la session
+   5. Redirection automatique vers espace-client.html (connecté)
+   6. Le trigger handle_new_user() insère automatiquement
       le profil dans public.clients (côté serveur, SECURITY
       DEFINER, bypasse le RLS)
    ===================================================== */
@@ -49,14 +50,14 @@ export async function inscrire({
                 date_naissance: date_naissance || null,
                 code_parrainage_parrain: code_parrainage_parrain?.trim().toUpperCase() || null
             },
-            emailRedirectTo: `${window.location.origin}/pages/fidelite/connexion.html?confirmed=1`
+            /* Après clic sur le lien mail → connexion.js intercepte
+               le token et redirige vers espace-client.html */
+            emailRedirectTo: `${window.location.origin}/pages/fidelite/connexion.html`
         }
     });
 
     if (error) throw error;
 
-    /* Supabase retourne un user même si l'email n'est pas encore
-       confirmé. On retourne juste l'objet pour info. */
     return data.user;
 }
 

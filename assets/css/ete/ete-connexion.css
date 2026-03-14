@@ -1,0 +1,106 @@
+/* ================================================
+   ÉTÉ — Page connexion / inscription
+   Palette : soleil, sable, mer turquoise
+   ================================================ */
+
+body {
+    background: var(--fond);
+    color: var(--mer-profonde);
+    background-image:
+        radial-gradient(ellipse at 20% 10%, rgba(248, 201, 122, .12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 90%, rgba(200, 105, 26, .08) 0%, transparent 60%);
+}
+
+.auth-card {
+    background: var(--blanc);
+    box-shadow: 0 20px 60px rgba(42, 110, 122, .12);
+}
+
+.auth-card h1 {
+    color: var(--mer-profonde);
+}
+
+.auth-subtitle {
+    color: var(--mer-profonde);
+    opacity: .70;
+}
+
+/* ── Onglets ── */
+.auth-tabs {
+    background: var(--sable);
+}
+
+.auth-tab {
+    color: var(--mer-profonde);
+}
+
+.auth-tab.active {
+    background: var(--blanc);
+    color: var(--mer-profonde);
+}
+
+/* ── Inputs ── */
+.form-group input {
+    background: var(--fond);
+    border-color: rgba(42, 110, 122, .18);
+    color: var(--mer-profonde);
+}
+
+.form-group input:focus {
+    border-color: var(--mer-profonde);
+    box-shadow: 0 0 0 3px rgba(74, 155, 168, .12);
+    background: var(--blanc);
+}
+
+/* ── Bouton ── */
+.btn-auth {
+    background: var(--soleil);
+    color: var(--blanc);
+    box-shadow: 0 4px 14px rgba(200, 105, 26, .30);
+}
+
+.btn-auth:hover {
+    background: var(--terracotta);
+}
+
+/* ── Badges ── */
+.badge-required {
+    background: rgba(200, 105, 26, .10);
+    color: var(--soleil);
+}
+
+/* ── Mot de passe oublié ── */
+.forgot-link {
+    color: var(--mer-profonde);
+}
+
+/* ── Force mot de passe ── */
+.pwd-strength span {
+    background: rgba(42, 110, 122, .15);
+}
+
+.pwd-strength[data-level="1"] span:nth-child(1) {
+    background: #C0392B;
+}
+
+.pwd-strength[data-level="2"] span:nth-child(-n+2) {
+    background: var(--soleil-clair);
+}
+
+.pwd-strength[data-level="3"] span:nth-child(-n+3) {
+    background: var(--mer);
+}
+
+.pwd-strength[data-level="4"] span {
+    background: var(--mer-profonde);
+}
+
+/* ── Bouton retour accueil ── */
+.btn-retour {
+    color: var(--mer-profonde);
+    opacity: .60;
+}
+
+.btn-retour:hover {
+    opacity: 1;
+}

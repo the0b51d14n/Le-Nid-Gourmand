@@ -26,9 +26,14 @@
     const USNO_API = "https://aa.usno.navy.mil/api/seasons";
     const CACHE_KEY = "nid_season_dates";
 
-    /* Coordonnées de Lille (pour les chemins relatifs) */
-    const IN_PAGES = window.location.pathname.includes("/pages/");
-    const BASE_PATH = IN_PAGES ? "../" : "./";
+    /* Calcul du BASE_PATH selon la profondeur de la page :
+       - racine  (index.html)         → "./"
+       - pages/  (pages/*.html)       → "../"
+       - pages/fidelite/ (sous-dossier) → "../../"           */
+    const pathname = window.location.pathname;
+    const BASE_PATH = pathname.includes("/pages/fidelite/") ? "../../"
+        : pathname.includes("/pages/") ? "../"
+            : "./";
 
 
     /* ══════════════════════════════════════════════════
@@ -170,46 +175,107 @@
        MODULE 1 — CSS SAISONNIER
     ══════════════════════════════════════════════════ */
 
-    function applySeasonCSS(season) {
+    /*
+       MAP PAGE → SUFFIXE CSS SAISONNIER
+       ─────────────────────────────────
+       Pour chaque page du site, on définit le(s) suffixe(s)
+       du fichier CSS saisonnier à injecter.
+       Le suffixe donne : {saison}/{saison}-{suffixe}.css
 
-        /* Précharge l'image hero immédiatement — coupe la cascade JS→CSS→image */
-        const preload = document.createElement("link");
-        preload.rel = "preload";
-        preload.as = "image";
-        preload.href = `${BASE_PATH}assets/images/hero/${season.key}/hero.png`;
-        document.head.appendChild(preload);
+       Pages sans suffixe spécifique → uniquement les 3 CSS
+       communs (principal, header, footer) suffisent.
+    */
+    const PAGE_CSS_MAP = [
+        /* ── Accueil ── */
+        {
+            match: p => p.endsWith("/") || p.endsWith("index.html"),
+            slugs: []
+        },                                        /* CSS principal = le .css racine */
 
-        /* CSS principal saisonnier */
-        const href = `${BASE_PATH}assets/css/${season.key}/${season.key}.css`;
+        /* ── Carte ── */
+        {
+            match: p => p.includes("Carte"),
+            slugs: ["carte"]
+        },
 
+        /* ── Concept ── */
+        {
+            match: p => p.includes("concept"),
+            slugs: ["concept"]
+        },
+
+        /* ── Galerie ── */
+        {
+            match: p => p.includes("galerie"),
+            slugs: ["galerie"]
+        },
+
+        /* ── Contact ── */
+        {
+            match: p => p.includes("contact"),
+            slugs: ["contact"]
+        },
+
+        /* ── Réservation ── */
+        {
+            match: p => p.includes("reservation"),
+            slugs: ["reservation"]
+        },
+
+        /* ── Fidélité : connexion ── */
+        {
+            match: p => p.includes("connexion"),
+            slugs: ["connexion"]
+        },
+
+        /* ── Fidélité : espace client ── */
+        {
+            match: p => p.includes("espace-client"),
+            slugs: ["espace-client"]
+        },
+
+        /* ── Fidélité : admin ── */
+        {
+            match: p => p.includes("admin"),
+            slugs: ["admin"]
+        },
+    ];
+
+    function injectCSS(href) {
         if (!document.querySelector(`link[href="${href}"]`)) {
             const link = document.createElement("link");
             link.rel = "stylesheet";
             link.href = href;
             document.head.appendChild(link);
         }
+    }
 
-        /* CSS header saisonnier */
-        const hrefHeader = `${BASE_PATH}assets/css/${season.key}/${season.key}-header.css`;
+    function applySeasonCSS(season) {
 
-        if (!document.querySelector(`link[href="${hrefHeader}"]`)) {
-            const link = document.createElement("link");
-            link.rel = "stylesheet";
-            link.href = hrefHeader;
-            document.head.appendChild(link);
+        const k = season.key;
+
+        /* Précharge l'image hero immédiatement — coupe la cascade JS→CSS→image */
+        const preload = document.createElement("link");
+        preload.rel = "preload";
+        preload.as = "image";
+        preload.href = `${BASE_PATH}assets/images/hero/${k}/hero.png`;
+        document.head.appendChild(preload);
+
+        /* ── CSS communs à toutes les pages ── */
+        injectCSS(`${BASE_PATH}assets/css/${k}/${k}.css`);
+        injectCSS(`${BASE_PATH}assets/css/${k}/${k}-header.css`);
+        injectCSS(`${BASE_PATH}assets/css/${k}/${k}-footer.css`);
+
+        /* ── CSS spécifique à la page courante ── */
+        const page = PAGE_CSS_MAP.find(entry => entry.match(pathname));
+
+        if (page) {
+            for (const slug of page.slugs) {
+                injectCSS(`${BASE_PATH}assets/css/${k}/${k}-${slug}.css`);
+            }
         }
 
-        /* CSS footer saisonnier */
-        const hrefFooter = `${BASE_PATH}assets/css/${season.key}/${season.key}-footer.css`;
-
-        if (!document.querySelector(`link[href="${hrefFooter}"]`)) {
-            const link = document.createElement("link");
-            link.rel = "stylesheet";
-            link.href = hrefFooter;
-            document.head.appendChild(link);
-        }
-
-        /* theme-color onglet mobile */
+        /* ── theme-color onglet mobile ── */
         let meta = document.querySelector('meta[name="theme-color"]');
         if (!meta) {
             meta = document.createElement("meta");
@@ -218,10 +284,10 @@
         }
         meta.content = season.themeColor;
 
-        /* Classe utilitaire sur <body> */
-        document.body.classList.add(`saison-${season.key}`);
+        /* ── Classe utilitaire sur <body> ── */
+        document.body.classList.add(`saison-${k}`);
 
-        console.info(`[SeasonCore] CSS appliqué : ${season.key}`);
+        console.info(`[SeasonCore] CSS appliqué : ${k}${page?.slugs.length ? ` + ${page.slugs.join(", ")}` : ""}`);
     }
 
 
@@ -388,47 +454,4 @@
     } else {
         boot();
     }
-
-    /* =====================================================
-   PATCH season-core.js
-   Ajouter ce bloc dans la fonction applySeasonCSS(),
-   APRÈS le bloc "CSS footer saisonnier" et AVANT
-   le bloc "theme-color onglet mobile".
-
-   Emplacement exact : après ces lignes :
-   ─────────────────────────────────────────────────
-        if (!document.querySelector(`link[href="${hrefFooter}"]`)) {
-            const link = document.createElement("link");
-            link.rel = "stylesheet";
-            link.href = hrefFooter;
-            document.head.appendChild(link);
-        }
-   ─────────────────────────────────────────────────
-   Insérer le bloc ci-dessous :
-===================================================== */
-
-    /* CSS fidélité saisonnier
-       Injecté uniquement sur les pages du module fidélité
-       (connexion, espace-client, admin). */
-    const IS_FIDELITE = window.location.pathname.includes("/fidelite/");
-
-    if (IS_FIDELITE) {
-        const hrefFidelite = `${BASE_PATH}assets/css/${season.key}/${season.key}-fidelite.css`;
-
-        if (!document.querySelector(`link[href="${hrefFidelite}"]`)) {
-            const link = document.createElement("link");
-            link.rel = "stylesheet";
-            link.href = hrefFidelite;
-            document.head.appendChild(link);
-        }
-    }
-
-    /* =====================================================
-       FIN DU PATCH
-       Le reste de applySeasonCSS() continue normalement :
-       ─────────────────────────────────────────────────
-            /* theme-color onglet mobile
-            let meta = document.querySelector('meta[name="theme-color"]');
-            ...
-    ===================================================== */
 }());
