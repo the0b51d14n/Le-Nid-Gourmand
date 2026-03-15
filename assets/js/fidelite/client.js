@@ -21,7 +21,6 @@ async function init() {
     if (!user) return;
 
     try {
-        /* Charge les données en parallèle */
         const [client, visites, recompenses, niveaux, catalogue] = await Promise.all([
             fetchClient(user.id),
             fetchVisites(user.id),
@@ -38,20 +37,14 @@ async function init() {
         renderParrainage(client);
         renderHistorique(visites);
 
-        /* Affiche le contenu, masque le skeleton */
         document.getElementById("ec-skeleton").style.display = "none";
         document.getElementById("ec-content").style.display = "block";
 
     } catch (err) {
         console.error("[client.js]", err);
 
-        /* ── Déconnexion automatique si le profil est introuvable ──
-           Code PGRST116 = 0 rows retournés par .single()
-           Arrive quand le trigger n'a pas créé le profil,
-           ou que la session est corrompue / orpheline.
-        ────────────────────────────────────────────────────────── */
         if (err?.code === "PGRST116" || err?.message?.includes("0 rows")) {
-            showToast("⚠️ Profil introuvable. Déconnexion en cours…", 3000);
+            showToast("Profil introuvable. Déconnexion en cours...", 3000);
             setTimeout(async () => {
                 await supabase.auth.signOut();
                 window.location.href = "/pages/fidelite/connexion.html?erreur=profil_introuvable";
@@ -59,11 +52,9 @@ async function init() {
             return;
         }
 
-        /* Autres erreurs réseau / serveur */
         showToast("Erreur de chargement. Rechargez la page.", 5000);
     }
 
-    /* Bouton déconnexion */
     document.getElementById("ec-logout").addEventListener("click", deconnecter);
 }
 
@@ -131,7 +122,6 @@ async function fetchCatalogue() {
 function renderHero(client) {
     const prenom = client.prenom || "";
     const nom = client.nom || "";
-
     document.getElementById("ec-nom").textContent = `Bonjour, ${prenom} ${nom}`;
     document.getElementById("ec-avatar").textContent = prenom.charAt(0).toUpperCase();
     document.getElementById("ec-depuis").textContent =
@@ -153,24 +143,20 @@ function renderRang(client, niveaux) {
     document.getElementById("rang-label").textContent = niveau.label;
     document.getElementById("rang-desc").textContent = niveau.description;
 
-    /* Progression vers le rang suivant */
     const suivant = niveaux.find(n => n.visites_min > visites);
 
     if (suivant) {
         const min = niveau.visites_min;
         const max = suivant.visites_min;
         const pct = Math.round(((visites - min) / (max - min)) * 100);
-
         document.getElementById("rang-progress").style.width = `${pct}%`;
         document.getElementById("rang-progress-label").textContent =
             `${visites - min} / ${max - min} visite${max - min > 1 ? "s" : ""} vers ${suivant.emoji} ${suivant.label}`;
     } else {
-        /* Rang max */
         document.getElementById("rang-progress").style.width = "100%";
         document.getElementById("rang-progress-label").textContent = "🔥 Rang maximum atteint !";
     }
 
-    /* Avantages */
     const ul = document.getElementById("rang-avantages");
     ul.innerHTML = "";
     (niveau.avantages || []).forEach(av => {
@@ -198,13 +184,12 @@ function renderPoints(client, catalogue) {
 
     catalogue.forEach(item => {
         const canAfford = client.points >= item.cout_points;
-
         const div = document.createElement("div");
         div.className = "ec-catalogue-item";
         div.innerHTML = `
             <div class="ec-catalogue-info">
                 <span class="ec-catalogue-label">${item.label}</span>
-                <span class="ec-catalogue-cost">${item.cout_points} pts</span>
+                <span class="ec-catalogue-cost">${item.cout_points} pts · valeur ~${item.valeur_euros}€</span>
             </div>
             <button class="ec-catalogue-btn" data-type="${item.type}" ${canAfford ? "" : "disabled"}>
                 ${canAfford ? "Échanger" : `${item.cout_points} pts`}
@@ -213,14 +198,13 @@ function renderPoints(client, catalogue) {
         wrap.appendChild(div);
     });
 
-    /* Échange de points */
     wrap.addEventListener("click", async e => {
         const btn = e.target.closest(".ec-catalogue-btn");
         if (!btn || btn.disabled) return;
 
         const type = btn.dataset.type;
         btn.disabled = true;
-        btn.textContent = "…";
+        btn.textContent = "...";
 
         const { data, error } = await supabase.rpc("echanger_points", {
             p_client_id: client.id,
@@ -228,16 +212,13 @@ function renderPoints(client, catalogue) {
         });
 
         if (error || data !== "ok") {
-            showToast(data === "points_insuffisants"
-                ? "Points insuffisants."
-                : "Erreur lors de l'échange.");
+            showToast(data === "points_insuffisants" ? "Points insuffisants." : "Erreur lors de l'échange.");
             btn.disabled = false;
             btn.textContent = "Échanger";
             return;
         }
 
         showToast("🎁 Récompense ajoutée à votre compte !");
-        /* Recharge la page pour refléter les nouveaux points */
         setTimeout(() => window.location.reload(), 1200);
     });
 }
@@ -256,7 +237,6 @@ function renderQR(client) {
         return;
     }
 
-    /* QRCode.js (chargé via CDN dans le HTML) */
     if (typeof QRCode !== "undefined") {
         new QRCode(wrap, {
             text: client.qr_code,
@@ -267,7 +247,6 @@ function renderQR(client) {
             correctLevel: QRCode.CorrectLevel.M
         });
     } else {
-        /* Fallback texte si lib non chargée */
         wrap.innerHTML = `<p class="ec-empty">QR code non disponible.</p>`;
     }
 
@@ -276,17 +255,17 @@ function renderQR(client) {
 
 
 /* ════════════════════════════════════════════════════
-   RENDER — RÉCOMPENSES
+   RENDER — RECOMPENSES
 ════════════════════════════════════════════════════ */
 
 const TYPE_LABELS = {
-    cafe: "☕ Café offert",
-    dessert: "🍮 Dessert offert",
-    entree: "🥗 Entrée offerte",
-    plat: "🍽️ Plat offert",
-    repas_complet: "🎉 Repas complet offert",
-    points_bonus: "⭐ Points bonus",
-    passage_niveau: "🏅 Passage de niveau"
+    cafe: "Cafe offert",
+    dessert: "Dessert offert",
+    entree: "Entree offerte",
+    plat: "Plat offert",
+    repas_complet: "Repas complet offert",
+    points_bonus: "Points bonus",
+    passage_niveau: "Passage de niveau"
 };
 
 function renderRecompenses(recompenses) {
@@ -316,7 +295,6 @@ function renderRecompenses(recompenses) {
         wrap.appendChild(div);
     });
 
-    /* Marquer comme utilisée */
     wrap.addEventListener("click", async e => {
         const btn = e.target.closest(".ec-recompense-btn");
         if (!btn) return;
@@ -324,7 +302,7 @@ function renderRecompenses(recompenses) {
         if (!confirm("Confirmer l'utilisation de cette récompense ?")) return;
 
         btn.disabled = true;
-        btn.textContent = "…";
+        btn.textContent = "...";
 
         const { error } = await supabase
             .from("recompenses")
@@ -341,7 +319,6 @@ function renderRecompenses(recompenses) {
         showToast("✅ Récompense utilisée !");
         btn.closest(".ec-recompense-item").remove();
 
-        /* Si plus aucune récompense */
         if (!wrap.querySelector(".ec-recompense-item")) {
             wrap.innerHTML = `<p class="ec-empty">Aucune récompense disponible pour l'instant.</p>`;
         }
@@ -357,17 +334,47 @@ function renderParrainage(client) {
     const code = client.code_parrainage || "——";
     document.getElementById("ec-parrain-code").textContent = code;
 
-    /* Lien d'invitation pré-rempli */
     const url = `${window.location.origin}/pages/fidelite/connexion.html?tab=inscription&parrain=${code}`;
-    document.getElementById("ec-parrain-invite").href = url;
 
-    /* Copier le code */
+    const btnInvite = document.getElementById("ec-parrain-invite");
+    btnInvite.href = "#";
+
+    btnInvite.addEventListener("click", async (e) => {
+        e.preventDefault();
+
+        const shareData = {
+            title: "Rejoins le programme fidélité Le Nid Gourmand 🐣",
+            text: `Inscris-toi avec mon code parrain ${code} et profite d'avantages exclusifs dès ta première visite !`,
+            url
+        };
+
+        if (navigator.share) {
+            try {
+                await navigator.share(shareData);
+            } catch (err) {
+                if (err.name !== "AbortError") {
+                    copierLienInvitation(url);
+                }
+            }
+        } else {
+            copierLienInvitation(url);
+        }
+    });
+
     document.getElementById("ec-copy-parrain").addEventListener("click", () => {
         navigator.clipboard.writeText(code).then(() => {
             showToast("📋 Code copié !");
         }).catch(() => {
             showToast("Code : " + code);
         });
+    });
+}
+
+function copierLienInvitation(url) {
+    navigator.clipboard.writeText(url).then(() => {
+        showToast("🔗 Lien d'invitation copié !");
+    }).catch(() => {
+        showToast("Lien : " + url);
     });
 }
 
@@ -411,7 +418,6 @@ function formatDate(iso) {
     });
 }
 
-/* Toast notification */
 let toastTimer = null;
 
 function showToast(msg, duration = 3000) {

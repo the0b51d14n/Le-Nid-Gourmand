@@ -1,0 +1,474 @@
+/* ================================================
+   legal.css
+   Pages légales — Mentions / CGU / Confidentialité
+   ================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ── Variables ── */
+:root {
+    --bg: #F2F1EF;
+    --surface: #FFFFFF;
+    --border: #DEDAD5;
+    --border-lt: #ECEAE6;
+    --text: #1F1E1C;
+    --muted: #6E6B66;
+    --subtle: #A8A49F;
+    --ph-bg: #FDFAF0;
+    --ph-bdr: #C8A030;
+    --ph-txt: #7A5A18;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --max-w: 760px;
+    --r: 6px;
+}
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 15px;
+    scroll-behavior: smooth;
+}
+
+/* ── Base ── */
+body {
+    font-family: var(--sans);
+    font-weight: 300;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ── Layout ── */
+.wrap {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 28px;
+}
+
+/* ── Header ── */
+header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 52px 0 40px;
+}
+
+.eyebrow {
+    display: block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--subtle);
+    margin-bottom: 14px;
+}
+
+header h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.15;
+}
+
+.meta {
+    margin-top: 10px;
+    font-size: 12.5px;
+    color: var(--subtle);
+}
+
+/* ── Nav entre pages ── */
+nav.pages {
+    display: inline-flex;
+    margin-top: 30px;
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    overflow: hidden;
+}
+
+nav.pages a {
+    display: block;
+    padding: 8px 20px;
+    font-size: 12.5px;
+    color: var(--muted);
+    text-decoration: none;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    transition: background .15s, color .15s;
+}
+
+nav.pages a:last-child {
+    border-right: none;
+}
+
+nav.pages a:hover {
+    background: var(--bg);
+    color: var(--text);
+}
+
+nav.pages a.on {
+    background: var(--text);
+    color: #fff;
+}
+
+/* ── Main ── */
+main {
+    padding: 48px 0 96px;
+}
+
+/* ── Sommaire ── */
+.toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 28px 32px;
+    margin-bottom: 12px;
+}
+
+.toc-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--subtle);
+    margin-bottom: 16px;
+}
+
+.toc ol {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 24px;
+}
+
+.toc ol li a {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border-lt);
+    transition: color .15s;
+}
+
+.toc ol li a:hover {
+    color: var(--text);
+}
+
+.toc ol li a .n {
+    font-size: 10px;
+    color: var(--border);
+    flex-shrink: 0;
+}
+
+/* ── Section ── */
+section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 36px 40px;
+    margin-bottom: 12px;
+}
+
+.art {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--subtle);
+    margin-bottom: 6px;
+}
+
+section h2 {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--text);
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-lt);
+}
+
+section h3 {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 22px 0 10px;
+}
+
+section p {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 10px;
+}
+
+section p:last-child {
+    margin-bottom: 0;
+}
+
+a {
+    color: var(--text);
+    text-underline-offset: 3px;
+}
+
+strong {
+    font-weight: 500;
+    color: var(--text);
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border-lt);
+    margin: 16px 0;
+}
+
+/* ── Champs structurés ── */
+dl {
+    margin: 4px 0;
+}
+
+.field {
+    display: flex;
+    gap: 20px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-lt);
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.field:last-of-type {
+    border-bottom: none;
+}
+
+.field dt {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    min-width: 210px;
+    flex-shrink: 0;
+}
+
+.field dd {
+    font-size: 13.5px;
+    color: var(--muted);
+}
+
+/* ── Listes ── */
+ul {
+    list-style: none;
+    margin: 10px 0;
+}
+
+ul li {
+    font-size: 14px;
+    color: var(--muted);
+    padding: 7px 0 7px 16px;
+    border-bottom: 1px solid var(--border-lt);
+    position: relative;
+}
+
+ul li:last-child {
+    border-bottom: none;
+}
+
+ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 5px;
+    height: 1px;
+    background: var(--border);
+}
+
+/* ── Tableau ── */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 13.5px;
+}
+
+thead tr {
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+}
+
+th {
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--subtle);
+}
+
+td {
+    padding: 10px 14px;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border-lt);
+    vertical-align: top;
+    font-weight: 300;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* ── Grille droits RGPD ── */
+.rights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.rights div {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px;
+    background: var(--bg);
+}
+
+.rights div b {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 5px;
+}
+
+.rights div p {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-bottom: 0;
+    line-height: 1.55;
+}
+
+/* ── Placeholders ── */
+.ph {
+    background: var(--ph-bg);
+    border: 1px dashed var(--ph-bdr);
+    color: var(--ph-txt);
+    font-size: 12px;
+    font-style: italic;
+    padding: 1px 8px;
+    border-radius: 3px;
+}
+
+.note {
+    background: var(--ph-bg);
+    border-left: 3px solid var(--ph-bdr);
+    border-radius: 0 4px 4px 0;
+    padding: 14px 18px;
+    margin-top: 16px;
+}
+
+.note b {
+    display: block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ph-txt);
+    margin-bottom: 4px;
+}
+
+.note p {
+    font-size: 13px;
+    color: var(--ph-txt);
+    margin-bottom: 0;
+}
+
+/* ── Footer ── */
+footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 22px 0;
+}
+
+.fi {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+footer small {
+    font-size: 12px;
+    color: var(--subtle);
+}
+
+footer nav a {
+    font-size: 12px;
+    color: var(--subtle);
+    text-decoration: none;
+    margin-left: 20px;
+    transition: color .15s;
+}
+
+footer nav a:hover {
+    color: var(--text);
+}
+
+footer nav a.on {
+    color: var(--text);
+    font-weight: 500;
+}
+
+/* ── Responsive ── */
+@media (max-width: 620px) {
+    section {
+        padding: 24px 20px;
+    }
+
+    .toc {
+        padding: 22px 20px;
+    }
+
+    .toc ol {
+        grid-template-columns: 1fr;
+    }
+
+    .rights {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .field {
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .field dt {
+        min-width: unset;
+    }
+
+    .fi {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    footer nav a:first-child {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 400px) {
+    .rights {
+        grid-template-columns: 1fr;
+    }
+}
