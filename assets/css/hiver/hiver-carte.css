@@ -1,0 +1,62 @@
+
+.hero-menu {
+
+    background-image:
+        linear-gradient(rgba(10, 22, 40, 0.65), rgba(10, 22, 40, 0.50)),
+        url("../../images/logo/logo hiver.png");
+
+}
+
+
+/* ── Sous-titres ── */
+
+.menu-subtitle {
+
+    color: var(--aurore);
+
+}
+
+
+/* ── Carte produit ── */
+
+.menu-card {
+
+    background: linear-gradient(145deg, #0F1E36 0%, #0A1628 100%);
+
+    border: 1px solid rgba(174, 239, 255, .18);
+
+    /* liseré aurore en haut */
+    border-top: 2px solid rgba(174, 239, 255, .35);
+
+    box-shadow: 0 8px 28px rgba(0, 0, 0, .35);
+
+}
+
+.menu-card:hover {
+
+    border-top-color: var(--lavande);
+
+    box-shadow:
+        0 14px 38px rgba(0, 0, 0, .42),
+        0 0 20px rgba(220, 214, 255, .10);
+
+}
+
+.menu-card h4 {
+
+    color: var(--aurore);
+
+}
+
+.menu-card p {
+
+    color: var(--givre);
+    opacity: .80;
+
+}
+
+.menu-card span {
+
+    color: var(--bleu-profond);
+
+}

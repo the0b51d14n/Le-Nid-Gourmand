@@ -1,135 +1,348 @@
-.hero-menu{
+/* ================================================
+   Carte.css — Structure universelle
+   Reprend les éléments de style.css nécessaires
+   à la page Carte.
+   Aucune couleur ici — tout est dans
+   les fichiers {saison}-carte.css
+   ================================================ */
 
-background-image:
-linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
-url("../images/logo/logo hero off.png");
 
-background-size:cover;
-background-position:center;
+/* ── Reset ── */
 
-}
+*,
+*::before,
+*::after {
 
-.menu-section{
-text-align:center;
-}
-
-.menu-subtitle{
-
-font-size:1.5rem;
-
-margin-top:60px;
-margin-bottom:25px;
-
-text-align:center;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 
 }
 
 
-/* GRID PRODUITS */
+/* ── Base ── */
 
-.menu-grid{
+body {
 
-display:flex;
+    font-family: "Inter", sans-serif;
 
-flex-wrap:wrap;
+    line-height: 1.9;
 
-justify-content:center;
+    -webkit-font-smoothing: antialiased;
 
-gap:30px;
-
-margin-bottom:50px;
+    /* background et color définis dans {saison}-carte.css */
 
 }
 
 
-/* CARTE PRODUIT */
+/* ── Typographie ── */
 
-.menu-card{
+h1,
+h2,
+h3 {
 
-background:var(--blanc);
-
-border-radius:28px;
-
-padding:25px;
-
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-
-display:flex;
-flex-direction:column;
-
-align-items:center;
-text-align:center;
-
-gap:10px;
-
-width:calc(50% - 30px);
-
-max-width:230px;
-
-transition:.25s;
+    font-family: "Playfair Display", serif;
+    font-weight: 600;
 
 }
 
-.menu-card:hover{
-
-transform:translateY(-6px);
-
-box-shadow:0 15px 35px rgba(0,0,0,.12);
-
+h1 {
+    font-size: 2.3rem;
+    margin-bottom: 35px;
 }
 
-.menu-card h4{
-
-font-family:"Playfair Display",serif;
-
-font-size:1.1rem;
-
+h2 {
+    font-size: 1.9rem;
+    margin-bottom: 45px;
 }
 
-.menu-card p{
-
-font-size:.9rem;
-
-opacity:.8;
-
-margin:0;
-
+h3 {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
 }
 
-.menu-card span{
+p {
+    margin: 24px 0;
+}
 
-margin-top:5px;
 
-font-weight:600;
+/* ── Layout ── */
 
-color:var(--bois);
+.container {
 
-font-size:1rem;
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
 
 }
 
 
-/* TABLET */
+/* ── Sections ── */
 
-@media (min-width:768px){
+section {
 
-.menu-card{
+    padding: 140px 0;
 
-width:calc(33.333% - 30px);
+    opacity: 0;
+    transform: translateY(40px);
+
+    transition: opacity .8s ease, transform .8s ease;
+
+}
+
+.visible {
+
+    opacity: 1;
+    transform: translateY(0);
 
 }
 
+
+/* ── Hero ── */
+
+.hero {
+
+    position: relative;
+
+    height: 100vh;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    padding: 0 20px;
+
+    overflow: hidden;
+
+    opacity: 1;
+    transform: none;
+
+}
+
+/* Voile noir universel */
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, .15);
+
+    pointer-events: none;
+
+    z-index: 1;
+
+}
+
+.hero-content {
+
+    max-width: 650px;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: relative;
+    z-index: 2;
+
+}
+
+/* Force le texte en blanc dans le hero quelle que soit la saison */
+.hero .hero-content,
+.hero .hero-content h1,
+.hero .hero-content h2,
+.hero .hero-content h3,
+.hero .hero-content p {
+
+    color: white;
+
+}
+
+.hero .hero-content h1 {
+
+    text-shadow:
+        0 2px 12px rgba(0, 0, 0, .65),
+        0 4px 30px rgba(0, 0, 0, .40);
+
+}
+
+.hero .hero-content p {
+
+    text-shadow: 0 1px 8px rgba(0, 0, 0, .70);
+
 }
 
 
-/* DESKTOP */
+/* ── Hero Carte ── */
 
-@media (min-width:1100px){
+.hero-menu {
 
-.menu-card{
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+        url("../images/logo/logo hero off.png");
 
-width:calc(25% - 30px);
+    background-size: cover;
+    background-position: center;
+
+    /* Image remplacée selon la saison dans {saison}-carte.css */
 
 }
+
+
+/* ── Sections menu ── */
+
+.menu-section {
+
+    text-align: center;
+
+}
+
+
+/* ── Sous-titres de catégorie ── */
+
+.menu-subtitle {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 1.5rem;
+
+    margin-top: 60px;
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    /* color définie dans {saison}-carte.css */
+
+}
+
+
+/* ── Grille de cartes ── */
+
+.menu-grid {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 30px;
+
+    margin-bottom: 50px;
+
+}
+
+
+/* ── Carte produit ── */
+
+.menu-card {
+
+    border-radius: 28px;
+
+    padding: 25px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    gap: 10px;
+
+    width: calc(50% - 30px);
+    max-width: 230px;
+
+    transition: transform .25s ease, box-shadow .25s ease;
+
+    /* background, shadow, border définis dans {saison}-carte.css */
+
+}
+
+.menu-card:hover {
+
+    transform: translateY(-6px);
+
+}
+
+
+/* ── Nom du produit ── */
+
+.menu-card h4 {
+
+    font-family: "Playfair Display", serif;
+    font-size: 1.1rem;
+
+    /* color définie dans {saison}-carte.css */
+
+}
+
+
+/* ── Description (optionnelle) ── */
+
+.menu-card p {
+
+    font-size: .9rem;
+    margin: 0;
+
+    /* color définie dans {saison}-carte.css */
+
+}
+
+
+/* ── Prix ── */
+
+.menu-card span {
+
+    margin-top: 5px;
+
+    font-weight: 600;
+    font-size: 1rem;
+
+    /* color définie dans {saison}-carte.css */
+
+}
+
+
+/* ── Responsive ── */
+
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 2.3rem;
+    }
+
+}
+
+@media (min-width: 768px) {
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    .menu-card {
+        width: calc(33.333% - 30px);
+    }
+
+}
+
+@media (min-width: 1100px) {
+
+    .container {
+        max-width: 1100px;
+    }
+
+    .menu-card {
+        width: calc(25% - 30px);
+    }
 
 }

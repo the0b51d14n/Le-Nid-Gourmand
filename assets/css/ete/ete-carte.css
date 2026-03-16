@@ -1,0 +1,65 @@
+/* ================================================
+   ÉTÉ — Page Carte
+   Palette : soleil brûlant, sable chaud, mer turquoise
+   ================================================ */
+
+
+/* ── Hero ── */
+
+.hero-menu {
+
+    background-image:
+        linear-gradient(rgba(42, 110, 122, 0.55), rgba(200, 105, 26, 0.45)),
+        url("../../images/hero/ete/hero.png");
+
+}
+
+
+/* ── Sous-titres ── */
+
+.menu-subtitle {
+
+    color: var(--mer-profonde);
+
+}
+
+
+/* ── Carte produit ── */
+
+.menu-card {
+
+    background: var(--blanc);
+
+    box-shadow: 0 10px 25px rgba(42, 110, 122, .09);
+
+    /* liseré soleil en haut */
+    border-top: 3px solid var(--soleil-clair);
+
+}
+
+.menu-card:hover {
+
+    box-shadow: 0 15px 35px rgba(42, 110, 122, .16);
+
+    border-top-color: var(--soleil);
+
+}
+
+.menu-card h4 {
+
+    color: var(--mer-profonde);
+
+}
+
+.menu-card p {
+
+    color: var(--mer-profonde);
+    opacity: .70;
+
+}
+
+.menu-card span {
+
+    color: var(--soleil);
+
+}

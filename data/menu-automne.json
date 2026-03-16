@@ -1,0 +1,102 @@
+{
+    "season": "hiver",
+    "featured": [
+        {
+            "name": "Velouté de châtaignes",
+            "description": "Châtaignes rôties, crème fraîche et huile de truffe.",
+            "image": "../../assets/images/plats/veloutee-hiver.jpg"
+        },
+        {
+            "name": "Confit de canard",
+            "description": "Cuisse confite, pommes sarladaises et jus réduit.",
+            "image": "../../assets/images/plats/canard-hiver.jpg"
+        },
+        {
+            "name": "Fondant chocolat noir",
+            "description": "Cœur coulant, glace vanille bourbon.",
+            "image": "../../assets/images/plats/fondant-hiver.jpg"
+        }
+    ],
+    "menu": {
+        "drinks": {
+            "cocktails": [
+                {
+                    "name": "Old Fashioned",
+                    "price": "12€"
+                }
+            ],
+            "mocktails": [
+                {
+                    "name": "Gingembre Citron",
+                    "price": "5€"
+                }
+            ],
+            "beers": [
+                {
+                    "name": "Stout Artisanale",
+                    "price": "7€"
+                }
+            ],
+            "wines": [
+                {
+                    "name": "Bordeaux Rouge",
+                    "price": "8€"
+                }
+            ],
+            "spirits": [
+                {
+                    "name": "Cognac",
+                    "price": "12€"
+                }
+            ],
+            "softs": [
+                {
+                    "name": "Coca-Cola",
+                    "price": "4€"
+                }
+            ],
+            "aperitifs": [
+                {
+                    "name": "Kir Royal",
+                    "price": "8€"
+                }
+            ]
+        },
+        "sharing": [
+            {
+                "name": "Planche mixte",
+                "price": "16€"
+            }
+        ],
+        "starters": [
+            {
+                "name": "Velouté de châtaignes",
+                "price": "8€"
+            },
+            {
+                "name": "Foie gras maison",
+                "price": "14€"
+            }
+        ],
+        "mains": [
+            {
+                "name": "Confit de canard",
+                "price": "19€"
+            },
+            {
+                "name": "Risotto truffe",
+                "price": "18€"
+            }
+        ],
+        "desserts": [
+            {
+                "name": "Fondant chocolat",
+                "price": "8€"
+            },
+            {
+                "name": "Tarte tatin",
+                "price": "7€"
+            }
+        ]
+    }
+}

@@ -1,0 +1,65 @@
+/* ================================================
+   AUTOMNE — Page Carte
+   Palette : rouille profonde, miel, brun teck, brume
+   ================================================ */
+
+
+/* ── Hero ── */
+
+.hero-menu {
+
+    background-image:
+        linear-gradient(rgba(42, 30, 20, 0.60), rgba(158, 61, 26, 0.45)),
+        url("../../images/hero/automne/hero.png");
+
+}
+
+
+/* ── Sous-titres ── */
+
+.menu-subtitle {
+
+    color: var(--rouille);
+
+}
+
+
+/* ── Carte produit ── */
+
+.menu-card {
+
+    background: var(--blanc);
+
+    box-shadow: 0 10px 25px rgba(107, 58, 34, .10);
+
+    /* liseré miel en bas */
+    border-bottom: 3px solid var(--miel-pale);
+
+}
+
+.menu-card:hover {
+
+    box-shadow: 0 15px 35px rgba(107, 58, 34, .16);
+
+    border-bottom-color: var(--miel);
+
+}
+
+.menu-card h4 {
+
+    color: var(--nuit-automne);
+
+}
+
+.menu-card p {
+
+    color: var(--nuit-automne);
+    opacity: .65;
+
+}
+
+.menu-card span {
+
+    color: var(--rouille);
+
+}

@@ -1,0 +1,102 @@
+{
+    "season": "hiver",
+    "featured": [
+        {
+            "name": "Oeuf cocotte forestière",
+            "description": "Œuf cocotte accompagné d’une sauce forestière aux champignons de Paris, gratiné à l’emmental et délicatement parfumé.",
+            "image": "../../assets/images/plats/oeuf-cocotte.jpg"
+        },
+        {
+            "name": "Pulled Pork",
+            "description": "Porc effiloché fondant, nappé d’une sauce BBQ au ketchup, avec de délicats oignons blancs confits pour une touche gourmande.",
+            "image": "../../assets/images/plats/pulled-pork.jpg"
+        },
+        {
+            "name": "Brookies",
+            "description": "Alliance gourmande de brownie chocolat et de cookie moelleux, fondant à chaque bouchée.",
+            "image": "../../assets/images/plats/brookies.jpg"
+        }
+    ],
+    "menu": {
+        "drinks": {
+            "cocktails": [
+                {
+                    "name": "Old Fashioned",
+                    "price": "12€"
+                }
+            ],
+            "mocktails": [
+                {
+                    "name": "Gingembre Citron",
+                    "price": "5€"
+                }
+            ],
+            "beers": [
+                {
+                    "name": "Stout Artisanale",
+                    "price": "7€"
+                }
+            ],
+            "wines": [
+                {
+                    "name": "Bordeaux Rouge",
+                    "price": "8€"
+                }
+            ],
+            "spirits": [
+                {
+                    "name": "Cognac",
+                    "price": "12€"
+                }
+            ],
+            "softs": [
+                {
+                    "name": "Coca-Cola",
+                    "price": "4€"
+                }
+            ],
+            "aperitifs": [
+                {
+                    "name": "Kir Royal",
+                    "price": "8€"
+                }
+            ]
+        },
+        "sharing": [
+            {
+                "name": "Planche mixte",
+                "price": "16€"
+            }
+        ],
+        "starters": [
+            {
+                "name": "Velouté de châtaignes",
+                "price": "8€"
+            },
+            {
+                "name": "Foie gras maison",
+                "price": "14€"
+            }
+        ],
+        "mains": [
+            {
+                "name": "Confit de canard",
+                "price": "19€"
+            },
+            {
+                "name": "Risotto truffe",
+                "price": "18€"
+            }
+        ],
+        "desserts": [
+            {
+                "name": "Fondant chocolat",
+                "price": "8€"
+            },
+            {
+                "name": "Tarte tatin",
+                "price": "7€"
+            }
+        ]
+    }
+}

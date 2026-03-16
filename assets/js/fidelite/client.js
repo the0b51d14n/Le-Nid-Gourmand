@@ -189,7 +189,7 @@ function renderPoints(client, catalogue) {
         div.innerHTML = `
             <div class="ec-catalogue-info">
                 <span class="ec-catalogue-label">${item.label}</span>
-                <span class="ec-catalogue-cost">${item.cout_points} pts · valeur ~${item.valeur_euros}€</span>
+                <span class="ec-catalogue-cost">${item.cout_points} pts</span>
             </div>
             <button class="ec-catalogue-btn" data-type="${item.type}" ${canAfford ? "" : "disabled"}>
                 ${canAfford ? "Échanger" : `${item.cout_points} pts`}
